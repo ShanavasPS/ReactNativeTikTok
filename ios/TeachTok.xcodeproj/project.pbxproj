@@ -27,6 +27,7 @@
 		CEB8CC3736E04D28BFD722A7 /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E3D2D166294AC186784326 /* share.png */; };
 		37776FE6E8994A27A7DEE0DF /* tickmark.png in Resources */ = {isa = PBXBuildFile; fileRef = E634045A67A74AD0B317115D /* tickmark.png */; };
 		55C265EE2E2D4B2991CC3AED /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 96170EF83B244D9FBBD47D68 /* arrow.png */; };
+		D5D9D120976B4A269312C6C1 /* activity.png in Resources */ = {isa = PBXBuildFile; fileRef = 194F071B9AE84023920D2AF4 /* activity.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		48E3D2D166294AC186784326 /* share.png */ = {isa = PBXFileReference; name = "share.png"; path = "../src/assets/share.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		E634045A67A74AD0B317115D /* tickmark.png */ = {isa = PBXFileReference; name = "tickmark.png"; path = "../src/assets/tickmark.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		96170EF83B244D9FBBD47D68 /* arrow.png */ = {isa = PBXFileReference; name = "arrow.png"; path = "../src/assets/arrow.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		194F071B9AE84023920D2AF4 /* activity.png */ = {isa = PBXFileReference; name = "activity.png"; path = "../src/assets/activity.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +193,7 @@
 				48E3D2D166294AC186784326 /* share.png */,
 				E634045A67A74AD0B317115D /* tickmark.png */,
 				96170EF83B244D9FBBD47D68 /* arrow.png */,
+				194F071B9AE84023920D2AF4 /* activity.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 				CEB8CC3736E04D28BFD722A7 /* share.png in Resources */,
 				37776FE6E8994A27A7DEE0DF /* tickmark.png in Resources */,
 				55C265EE2E2D4B2991CC3AED /* arrow.png in Resources */,
+				D5D9D120976B4A269312C6C1 /* activity.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
