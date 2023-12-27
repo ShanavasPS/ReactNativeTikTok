@@ -33,16 +33,12 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
     margin: 12,
     marginRight: 65,
+    marginBottom: 0
   },
   answerSelectionContainer: {
     flex: 1,
     alignItems: 'flex-start',
-  },
-  item: {
-    backgroundColor: '#f9c2ff',
-    padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
+
   },
   title: {
     fontSize: 32,

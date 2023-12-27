@@ -24,7 +24,7 @@ const AnswerOption = ({title}: ItemProps) => {
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    backgroundColor: 'rgba(255, 255, 255, 0.50)',
+    backgroundColor: 'rgba(255, 255, 255, 0.5)',
     borderRadius: 8,
     justifyContent: 'flex-start',
     alignItems: 'center',
@@ -38,6 +38,9 @@ const styles = StyleSheet.create({
     fontFamily: 'SF Pro Rounded',
     fontWeight: '500',
     flexWrap: 'wrap',
+    textShadowColor: 'rgba(0, 0, 0, 0.45)',
+    textShadowOffset: { width: 1, height: 1.5 },
+    textShadowRadius: 2,
   },
       iconContainer: {
         marginLeft: 8,
