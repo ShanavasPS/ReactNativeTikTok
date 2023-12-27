@@ -16,7 +16,7 @@ const AnswerSelection = ({item}: {item: McqData}) => {
   const { currentPageIndex } = store.getState() as { currentPageIndex: number };
 
   return (
-    <View style={styles.answerSelectionContainer}>
+    <View style={styles.container}>
         <FlatList
             data={item.options}
             ItemSeparatorComponent={() => <View style={{ height: 8 }} />}
@@ -29,12 +29,14 @@ const AnswerSelection = ({item}: {item: McqData}) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'flex-end',
+    paddingTop: 24,
+    alignItems: 'stretch',
+    margin: 12,
+    marginRight: 40,
   },
   answerSelectionContainer: {
     flex: 1,
-    justifyContent: 'flex-end',
+    alignItems: 'flex-start',
   },
   item: {
     backgroundColor: '#f9c2ff',

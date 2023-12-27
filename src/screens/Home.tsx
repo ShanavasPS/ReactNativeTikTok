@@ -41,7 +41,9 @@ const Home = () => {
           style={styles.backgroundImage}
         >
           <View style={styles.pageContainer}>
-            <Text>{item.question}</Text>
+            <View style={styles.questionContainer}>
+              <Text style={styles.questionText}>{item.question}</Text>
+            </View>
             <AnswerSelection item={item}></AnswerSelection>
             <UserInfo></UserInfo>
           </View>
@@ -54,6 +56,17 @@ const Home = () => {
 const styles = StyleSheet.create({
   pagerView: {
     flex: 1,
+  },
+  questionContainer: {
+    height: '30%', // Set the height to 30% of the screen height
+    justifyContent: 'center', // Center the content vertically
+    alignItems: 'center', // Center the content horizontally
+    margin: 12
+  },
+  questionText: {
+    fontSize: 24,
+    color: 'white',
+    fontWeight: 'bold',
   },
   backgroundImage: {
     flex: 1,
