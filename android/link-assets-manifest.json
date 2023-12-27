@@ -2,6 +2,10 @@
   "migIndex": 1,
   "data": [
     {
+      "path": "src/assets/arrow.png",
+      "sha1": "5bbf5dde1bb57f25b910793a9519bfdd39b992c2"
+    },
+    {
       "path": "src/assets/bookmarks.png",
       "sha1": "a678c8f1512f2d943448cb4ac6ff391da6614929"
     },

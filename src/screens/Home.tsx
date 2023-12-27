@@ -5,6 +5,7 @@ import AnswerSelection from './AnswerSelection';
 import UserInfo from './UserInfo';
 import { CounterState, store, fetchNextForYouItem, performAsyncOperation } from '../store/data_store';
 import { useSelector } from 'react-redux';
+import Playlist from './Playlist';
 
 const Home = () => {
   const content = useSelector((state: CounterState) => state.content);
@@ -46,6 +47,7 @@ const Home = () => {
             </View>
             <AnswerSelection item={item}></AnswerSelection>
             <UserInfo></UserInfo>
+            <Playlist></Playlist>
           </View>
         </ImageBackground>
       ))}
@@ -58,10 +60,10 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   questionContainer: {
-    height: '30%', // Set the height to 30% of the screen height
+    height: '50%', // Set the height to 30% of the screen height
     justifyContent: 'center', // Center the content vertically
     alignItems: 'center', // Center the content horizontally
-    margin: 12
+    margin: 16,
   },
   questionText: {
     fontSize: 24,

@@ -8,8 +8,8 @@ const UserInfo = () => {
 
   return (
     <View style={styles.container}>
-        <Text style={styles.username}>{username}</Text>
-        <Text style={styles.description}>{description}</Text>
+        <Text style={styles.apUsHistoryContainer}>{username}</Text>
+        <Text style={styles.additionalContainer}>{description}</Text>
     </View>
   );
 };
@@ -25,6 +25,20 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '400',
     marginBottom: 6,
+  },
+  apUsHistoryContainer: {
+    color: 'white',
+    fontSize: 15,
+    fontFamily: 'SF Pro Rounded',
+    fontWeight: '600',
+    flexWrap: 'wrap',
+  },
+  additionalContainer: {
+    color: 'white',
+    fontSize: 13,
+    fontFamily: 'SF Pro Rounded',
+    fontWeight: '400',
+    flexWrap: 'wrap',
   },
   description: {
     color: TikTokColors.statusBar,

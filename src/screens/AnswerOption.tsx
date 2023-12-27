@@ -12,7 +12,7 @@ const AnswerOption = ({title}: ItemProps) => {
   return (
     <View>
         <TouchableOpacity onPress={onPress} style={[styles.container]}>
-          <View style={styles.innerContainer}>
+          <View style={styles.container}>
             <Text style={styles.optionText}>{title}</Text>
             <Image source={require('../assets/cross.png')} />
           </View>
@@ -22,14 +22,23 @@ const AnswerOption = ({title}: ItemProps) => {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        borderRadius: 8,
-        paddingVertical: 16,
-        paddingHorizontal: 12,
-        marginVertical: 8,
-        margin: 12,
-        backgroundColor: TikTokColors.correctAnswerColor,
-      },
+  container: {
+    width: '100%',
+    backgroundColor: 'rgba(255, 255, 255, 0.50)',
+    borderRadius: 8,
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    flexDirection: 'row',
+    gap: 10,
+  },
+  optionText: {
+    color: 'white',
+    fontSize: 17,
+    padding: 12,
+    fontFamily: 'SF Pro Rounded',
+    fontWeight: '500',
+    flexWrap: 'wrap',
+  },
       iconContainer: {
         marginLeft: 8,
       },
@@ -37,11 +46,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-      },
-      optionText: {
-        color: TikTokColors.selectedText,
-        fontSize: 17,
-        fontWeight: '400',
       },
 })
 

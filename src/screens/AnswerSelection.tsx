@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     paddingTop: 24,
     alignItems: 'stretch',
     margin: 12,
-    marginRight: 40,
+    marginRight: 65,
   },
   answerSelectionContainer: {
     flex: 1,
