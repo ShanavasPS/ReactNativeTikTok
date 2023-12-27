@@ -1,5 +1,5 @@
 import React, {useEffect, useContext, useState} from 'react';
-import { StyleSheet, TouchableOpacity, Image, Text, View } from 'react-native'
+import { StyleSheet, TouchableOpacity, Image, Text, View, ImageBackground } from 'react-native'
 import PagerView, { PagerViewOnPageSelectedEvent } from 'react-native-pager-view';
 import AnswerSelection from './AnswerSelection';
 import UserInfo from './UserInfo';
@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux';
 const Home = () => {
   const content = useSelector((state: CounterState) => state.content);
   const currentPageIndex = useSelector((state: CounterState) => state.currentPageIndex);
-
+  const imageUrl = 
   useEffect(() => {
     console.log("Inside useeffect")
     store.dispatch(fetchNextForYouItem());
@@ -25,19 +25,27 @@ const Home = () => {
     store.dispatch(performAsyncOperation(position));
   };
 
+  const image = {uri: 'https://legacy.reactjs.org/logo-og.png'};
+
   return (
-    <PagerView 
-      style={styles.pagerView} 
-      initialPage={0} 
+    <PagerView
+      style={styles.pagerView}
+      initialPage={0}
       orientation={'vertical'}
       onPageSelected={handlePageSelected}
     >
       {content.map((item, index) => (
-        <View key={index.toString()} style={styles.pageContainer}>
-          <Text>{item.question}</Text>
-          <AnswerSelection item={item}></AnswerSelection>
-          <UserInfo></UserInfo>
-        </View>
+        <ImageBackground
+          key={index.toString()}
+          source={{uri: item.image}}
+          style={styles.backgroundImage}
+        >
+          <View style={styles.pageContainer}>
+            <Text>{item.question}</Text>
+            <AnswerSelection item={item}></AnswerSelection>
+            <UserInfo></UserInfo>
+          </View>
+        </ImageBackground>
       ))}
     </PagerView>
   );
@@ -46,6 +54,11 @@ const Home = () => {
 const styles = StyleSheet.create({
   pagerView: {
     flex: 1,
+  },
+  backgroundImage: {
+    flex: 1,
+    resizeMode: 'cover', // or 'stretch' depending on your needs
+    justifyContent: 'center',
   },
   pageContainer: {
     flex: 1,
