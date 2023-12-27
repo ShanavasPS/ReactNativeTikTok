@@ -1,0 +1,53 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/bookmarks.png",
+      "sha1": "a678c8f1512f2d943448cb4ac6ff391da6614929"
+    },
+    {
+      "path": "src/assets/comments.png",
+      "sha1": "704ef51bd9d50f05e8b60cc7bdf1e30eb57c8701"
+    },
+    {
+      "path": "src/assets/cross.png",
+      "sha1": "1217c849911260286f6222f1bf022c2965f4a9f9"
+    },
+    {
+      "path": "src/assets/discover.png",
+      "sha1": "a6a6f073dd37de41ac66941c05db4f87e6a7ccb7"
+    },
+    {
+      "path": "src/assets/ellipse21.png",
+      "sha1": "c1b23744aeabcc1c3e04380a044bb815dcb1f7e3"
+    },
+    {
+      "path": "src/assets/follow.png",
+      "sha1": "98b3c1809ec86563cb1eb9ba92cf8efe3d9d7138"
+    },
+    {
+      "path": "src/assets/home.png",
+      "sha1": "c70510c41d49309e107092e30458feaef7d4f946"
+    },
+    {
+      "path": "src/assets/play.png",
+      "sha1": "cf31fb5c8021de677038783b9a20e72f533b1d70"
+    },
+    {
+      "path": "src/assets/profile.png",
+      "sha1": "09c3f6cd66fbe2d927e4b463c4b1ac1628e796a0"
+    },
+    {
+      "path": "src/assets/refresh.png",
+      "sha1": "c09c46947dcbfd664ed421391f2b37af6d25d037"
+    },
+    {
+      "path": "src/assets/share.png",
+      "sha1": "3cc5ac32cb00844452b193068195a3e06ff7fde6"
+    },
+    {
+      "path": "src/assets/tickmark.png",
+      "sha1": "41f40728e4f8399ef06af1650c60166100fd5d4d"
+    }
+  ]
+}

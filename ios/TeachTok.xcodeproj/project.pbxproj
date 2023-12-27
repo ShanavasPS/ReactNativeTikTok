@@ -14,6 +14,18 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-TeachTok-TeachTokTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-TeachTok-TeachTokTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		AB2A8FECB5804A95BA7B1AC3 /* bookmarks.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AAF6ACBE80644D688F2DC11 /* bookmarks.png */; };
+		75AF615BFB8844BD8512B0C4 /* comments.png in Resources */ = {isa = PBXBuildFile; fileRef = 24A1E6DF6EE74DA8A437B3B8 /* comments.png */; };
+		904FFC44C9844AD0AAFA5CAE /* cross.png in Resources */ = {isa = PBXBuildFile; fileRef = CED6D656CB0B43F89DC3F3D9 /* cross.png */; };
+		A1FAF9E6227C4A2B84060FA7 /* discover.png in Resources */ = {isa = PBXBuildFile; fileRef = C83FF3D18CE14C41A73935FA /* discover.png */; };
+		6EB6CDE0893B4D1483A3D14E /* ellipse21.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B234D58F6B54B6FB74E514D /* ellipse21.png */; };
+		CD494C38117A430B8FE7549D /* follow.png in Resources */ = {isa = PBXBuildFile; fileRef = D805F3CB2F3E4669ACD3E867 /* follow.png */; };
+		43DEE621F4234D169621D832 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = D1552FD6395A4E87A4511E03 /* home.png */; };
+		FB7E545577504872BA8459DE /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C14BBDB1AEC4D3EB5B463C5 /* play.png */; };
+		E495E6AEA4D9408C956ABD3A /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 783E58811C4E47189C5FC693 /* profile.png */; };
+		50522285AACF407AA5C7D1D3 /* refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = 06A2B91C695F4E73B6BCB189 /* refresh.png */; };
+		CEB8CC3736E04D28BFD722A7 /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E3D2D166294AC186784326 /* share.png */; };
+		37776FE6E8994A27A7DEE0DF /* tickmark.png in Resources */ = {isa = PBXBuildFile; fileRef = E634045A67A74AD0B317115D /* tickmark.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +56,18 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = TeachTok/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-TeachTok-TeachTokTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeachTok-TeachTokTests.release.xcconfig"; path = "Target Support Files/Pods-TeachTok-TeachTokTests/Pods-TeachTok-TeachTokTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		1AAF6ACBE80644D688F2DC11 /* bookmarks.png */ = {isa = PBXFileReference; name = "bookmarks.png"; path = "../src/assets/bookmarks.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		24A1E6DF6EE74DA8A437B3B8 /* comments.png */ = {isa = PBXFileReference; name = "comments.png"; path = "../src/assets/comments.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		CED6D656CB0B43F89DC3F3D9 /* cross.png */ = {isa = PBXFileReference; name = "cross.png"; path = "../src/assets/cross.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C83FF3D18CE14C41A73935FA /* discover.png */ = {isa = PBXFileReference; name = "discover.png"; path = "../src/assets/discover.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		4B234D58F6B54B6FB74E514D /* ellipse21.png */ = {isa = PBXFileReference; name = "ellipse21.png"; path = "../src/assets/ellipse21.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D805F3CB2F3E4669ACD3E867 /* follow.png */ = {isa = PBXFileReference; name = "follow.png"; path = "../src/assets/follow.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D1552FD6395A4E87A4511E03 /* home.png */ = {isa = PBXFileReference; name = "home.png"; path = "../src/assets/home.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		6C14BBDB1AEC4D3EB5B463C5 /* play.png */ = {isa = PBXFileReference; name = "play.png"; path = "../src/assets/play.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		783E58811C4E47189C5FC693 /* profile.png */ = {isa = PBXFileReference; name = "profile.png"; path = "../src/assets/profile.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		06A2B91C695F4E73B6BCB189 /* refresh.png */ = {isa = PBXFileReference; name = "refresh.png"; path = "../src/assets/refresh.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		48E3D2D166294AC186784326 /* share.png */ = {isa = PBXFileReference; name = "share.png"; path = "../src/assets/share.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E634045A67A74AD0B317115D /* tickmark.png */ = {isa = PBXFileReference; name = "tickmark.png"; path = "../src/assets/tickmark.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +146,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				5A051D51FE85498F9CAC0B06 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -147,6 +172,26 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
+		};
+		5A051D51FE85498F9CAC0B06 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				1AAF6ACBE80644D688F2DC11 /* bookmarks.png */,
+				24A1E6DF6EE74DA8A437B3B8 /* comments.png */,
+				CED6D656CB0B43F89DC3F3D9 /* cross.png */,
+				C83FF3D18CE14C41A73935FA /* discover.png */,
+				4B234D58F6B54B6FB74E514D /* ellipse21.png */,
+				D805F3CB2F3E4669ACD3E867 /* follow.png */,
+				D1552FD6395A4E87A4511E03 /* home.png */,
+				6C14BBDB1AEC4D3EB5B463C5 /* play.png */,
+				783E58811C4E47189C5FC693 /* profile.png */,
+				06A2B91C695F4E73B6BCB189 /* refresh.png */,
+				48E3D2D166294AC186784326 /* share.png */,
+				E634045A67A74AD0B317115D /* tickmark.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -243,6 +288,18 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				AB2A8FECB5804A95BA7B1AC3 /* bookmarks.png in Resources */,
+				75AF615BFB8844BD8512B0C4 /* comments.png in Resources */,
+				904FFC44C9844AD0AAFA5CAE /* cross.png in Resources */,
+				A1FAF9E6227C4A2B84060FA7 /* discover.png in Resources */,
+				6EB6CDE0893B4D1483A3D14E /* ellipse21.png in Resources */,
+				CD494C38117A430B8FE7549D /* follow.png in Resources */,
+				43DEE621F4234D169621D832 /* home.png in Resources */,
+				FB7E545577504872BA8459DE /* play.png in Resources */,
+				E495E6AEA4D9408C956ABD3A /* profile.png in Resources */,
+				50522285AACF407AA5C7D1D3 /* refresh.png in Resources */,
+				CEB8CC3736E04D28BFD722A7 /* share.png in Resources */,
+				37776FE6E8994A27A7DEE0DF /* tickmark.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
