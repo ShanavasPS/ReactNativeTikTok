@@ -6,12 +6,12 @@ import { useSelector } from 'react-redux';
 
 type ItemProps = {
   title: string;
-  isOptionPressed: boolean; 
+  isOptionPressed: boolean;
+  isCorrectAnswer: boolean; 
 };
 
-const AnswerOption = ({title, isOptionPressed}: ItemProps) => {
+const AnswerOption = ({title, isOptionPressed, isCorrectAnswer}: ItemProps) => {
   const currentMcq = useSelector((state: CounterState) => state.currentMcq);
-  
   const onPress = () => {
     console.log("pressed an options")
     console.log(currentMcq)
@@ -19,12 +19,30 @@ const AnswerOption = ({title, isOptionPressed}: ItemProps) => {
     console.log(currentMcq)
   };
 
+  const getBackgroundColor = () => {
+    if (isOptionPressed) {
+      return isCorrectAnswer ? 'rgba(40, 177, 143, 0.70)' : 'rgba(220, 95, 95, 0.70)';
+    } else {
+      return 'rgba(255, 255, 255, 0.5)';
+    }
+  };
+
+  const getImageSource = () => {
+    if (isOptionPressed) {
+      return isCorrectAnswer
+        ? require('../assets/right.gif')
+        : require('../assets/wrong.gif');
+    } else {
+      return null;
+    }
+  };
+
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { backgroundColor: getBackgroundColor() }]}>
       <TouchableOpacity onPress={onPress} style={styles.touchableOpacity}>
         <View style={styles.innerContainer}>
           <Text style={styles.optionText}>{title}</Text>
-          {isOptionPressed && <Image style={styles.iconImage} source={require('../assets/right.gif')} />}
+          {isOptionPressed && <Image style={styles.iconImage} source={getImageSource()} />}
         </View>
       </TouchableOpacity>
     </View>
@@ -34,7 +52,6 @@ const AnswerOption = ({title, isOptionPressed}: ItemProps) => {
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    backgroundColor: 'rgba(255, 255, 255, 0.5)',
     borderRadius: 8,
     justifyContent: 'flex-start',
     alignItems: 'center',

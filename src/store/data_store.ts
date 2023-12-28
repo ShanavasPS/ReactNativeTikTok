@@ -98,7 +98,8 @@ const counterSlice = createSlice({
       console.log("received payload inside the reducer")
       const mcqData: McqData = action.payload.mcqData;
       mcqData.isOptionPressed = false;
-      mcqData.correct_options = action.payload.answerData;
+      const answerData: AnswerData = action.payload.answerData;
+      mcqData.correct_options = answerData.correct_options;
       console.log("adding this mcqdata to content");
       console.log(mcqData.isOptionPressed)
       console.log(mcqData);

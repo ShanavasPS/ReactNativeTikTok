@@ -20,6 +20,7 @@ const AnswerSelection = ({ item }: { item: McqData }) => {
           <AnswerOption
             title={option.answer}
             isOptionPressed={item.isOptionPressed}
+            isCorrectAnswer={item.correct_options.some(correctOption => correctOption.id === option.id)}
           />
         )}
         keyExtractor={(option) => option.id}
