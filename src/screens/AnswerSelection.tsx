@@ -10,19 +10,20 @@ import AnswerOption from './AnswerOption';
 import { store } from '../store/data_store';
 import { McqData } from '../model/options_model';
 
-const AnswerSelection = ({item}: {item: McqData}) => {
-
-  const { content } = store.getState() as { content: McqData[] };
-  const { currentPageIndex } = store.getState() as { currentPageIndex: number };
-
+const AnswerSelection = ({ item }: { item: McqData }) => {
   return (
     <View style={styles.container}>
-        <FlatList
-            data={item.options}
-            ItemSeparatorComponent={() => <View style={{ height: 8 }} />}
-            renderItem={({item}) => <AnswerOption title={item.answer} isCorrectAnswer={false} />}
-            keyExtractor={item => item.id}
-        />
+      <FlatList
+        data={item.options}
+        ItemSeparatorComponent={() => <View style={{ height: 8 }} />}
+        renderItem={({ item: option }) => (
+          <AnswerOption
+            title={option.answer}
+            isOptionPressed={item.isOptionPressed}
+          />
+        )}
+        keyExtractor={(option) => option.id}
+      />
     </View>
   );
 };

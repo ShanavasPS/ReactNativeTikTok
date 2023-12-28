@@ -27,9 +27,10 @@ export const performAsyncOperation = createAsyncThunk(
 
     // Access specific values from the current state
     const content = currentState.content;
+    await store.dispatch(updateCurrentPageIndex(pageIndex));
+
     if(pageIndex > content.length - 5) {
       console.log("number of elements is less")
-      await store.dispatch(updateCurrentPageIndex(pageIndex));
       await store.dispatch(fetchNextForYouItem());
     }
 
@@ -77,13 +78,17 @@ const counterSlice = createSlice({
     },
     updateCurrentPageIndex: (state, action) => {
       state.currentPageIndex = action.payload;
-      if(state.currentPageIndex > state.content.length) {
+      console.log("inside updatecurrentpageindex");
+      console.log(state.currentPageIndex);
+      if(state.currentPageIndex < state.content.length) {
         state.currentMcq = state.content[state.currentPageIndex];
         console.log("setting currentmcq from content");
         console.log(state.currentMcq);
       }
     },
     updateButtonPress: (state, action) => {
+      console.log("update button press")
+      console.log(state.currentPageIndex)
       state.content[state.currentPageIndex].isOptionPressed = action.payload;
       state.currentMcq.isOptionPressed = action.payload;
     },

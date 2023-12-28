@@ -6,15 +6,15 @@ import { useSelector } from 'react-redux';
 
 type ItemProps = {
   title: string;
-  isCorrectAnswer: boolean; 
+  isOptionPressed: boolean; 
 };
 
-const AnswerOption = ({title, isCorrectAnswer}: ItemProps) => {
-
-  const [showIcon, setShowIcon] = useState(false);
+const AnswerOption = ({title, isOptionPressed}: ItemProps) => {
   const currentMcq = useSelector((state: CounterState) => state.currentMcq);
   
   const onPress = () => {
+    console.log("pressed an options")
+    console.log(currentMcq)
     store.dispatch(updateButtonPress(true));
     console.log(currentMcq)
   };
@@ -24,7 +24,7 @@ const AnswerOption = ({title, isCorrectAnswer}: ItemProps) => {
       <TouchableOpacity onPress={onPress} style={styles.touchableOpacity}>
         <View style={styles.innerContainer}>
           <Text style={styles.optionText}>{title}</Text>
-          {currentMcq.isOptionPressed && <Image style={styles.iconImage} source={require('../assets/right.gif')} />}
+          {isOptionPressed && <Image style={styles.iconImage} source={require('../assets/right.gif')} />}
         </View>
       </TouchableOpacity>
     </View>
