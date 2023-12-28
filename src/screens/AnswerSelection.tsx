@@ -31,16 +31,7 @@ const AnswerSelection = ({ item }: { item: McqData }) => {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 24,
     alignItems: 'stretch',
-    margin: 12,
-    marginRight: 65,
-    marginBottom: 0
-  },
-  answerSelectionContainer: {
-    flex: 1,
-    alignItems: 'flex-start',
-
   },
   title: {
     fontSize: 32,

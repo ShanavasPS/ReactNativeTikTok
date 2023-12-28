@@ -18,7 +18,6 @@ const styles = StyleSheet.create({
   container: {
     paddingTop: 24,
     alignItems: 'flex-start',
-    margin: 12,
   },
   username: {
     color: TikTokColors.statusBar,

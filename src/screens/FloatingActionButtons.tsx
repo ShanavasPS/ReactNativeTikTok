@@ -21,10 +21,8 @@ const FloatingActionButtons = () => {
 
 const styles = StyleSheet.create({
   container: {
-    position: 'absolute',
     alignItems: 'center',
-    bottom: 66,
-    right: 8,
+    width: 45,
   },
   buttonContainer: {
     backgroundColor: 'red'

@@ -7,6 +7,7 @@ import { CounterState, store, fetchNextForYouItem, performAsyncOperation } from 
 import { useSelector } from 'react-redux';
 import Playlist from './Playlist';
 import TopBar from './TopBar';
+import FloatingActionButtons from './FloatingActionButtons';
 
 const Home = () => {
   const content = useSelector((state: CounterState) => state.content);
@@ -30,45 +31,65 @@ const Home = () => {
   const image = {uri: 'https://legacy.reactjs.org/logo-og.png'};
 
   return (
-    <SafeAreaView style={{ flex: 1}}>
+    <SafeAreaView style={{ flex: 1 }}>
       <PagerView
-      style={styles.pagerView}
-      initialPage={0}
-      orientation={'vertical'}
-      onPageSelected={handlePageSelected}
-    >
-      {content.map((item, index) => (
-        <ImageBackground
-          key={index.toString()}
-          source={{uri: item.image}}
-          style={styles.backgroundImage}
-        >
-          <TopBar/>
-          <View style={styles.pageContainer}>
-            <View style={styles.questionContainer}>
-              <Text style={styles.questionText}>{item.question}</Text>
+        style={styles.pagerView}
+        initialPage={0}
+        orientation={'vertical'}
+        onPageSelected={handlePageSelected}
+      >
+        {content.map((item, index) => (
+          <ImageBackground
+            key={index.toString()}
+            source={{ uri: item.image }}
+            style={styles.backgroundImage}
+          >
+            <TopBar />
+            <View style={styles.container}>
+              <View style={styles.pageContainer}>
+                <View style={[styles.questionContainer]}>
+                  <Text style={styles.questionText}>{item.question}</Text>
+                </View>
+                <AnswerSelection item={item}></AnswerSelection>
+                <View style={styles.userInfo}>
+                  <UserInfo></UserInfo>
+                </View>
+              </View>
+              <View style={styles.floatingActionButtons}>
+                <FloatingActionButtons />
+              </View>
             </View>
-            <AnswerSelection item={item}></AnswerSelection>
-            <UserInfo></UserInfo>
             <Playlist></Playlist>
-          </View>
-        </ImageBackground>
-      ))}
-    </PagerView>
+          </ImageBackground>
+        ))}
+      </PagerView>
     </SafeAreaView>
-    
   );
 }
 
 const styles = StyleSheet.create({
-  pagerView: {
+  container: {
     flex: 1,
+    flexDirection: 'row',
+  },
+  pageContainer: {
+    flex: 1,
+    justifyContent: 'space-between',
+    marginLeft: 16,
+    marginRight: 8
   },
   questionContainer: {
-    height: '50%', // Set the height to 30% of the screen height
+    flex: 1,
+    height: '50%',
     justifyContent: 'center', // Center the content vertically
-    alignItems: 'center', // Center the content horizontally
-    margin: 16,
+  },
+  floatingActionButtons: {
+    alignSelf: 'flex-end',
+    marginLeft: 12,
+    marginBottom: 16
+  },
+  pagerView: {
+    flex: 1,
   },
   questionText: {
     fontSize: 24,
@@ -80,9 +101,8 @@ const styles = StyleSheet.create({
     resizeMode: 'cover', // or 'stretch' depending on your needs
     justifyContent: 'center',
   },
-  pageContainer: {
-    flex: 1,
-    justifyContent: 'flex-end', // Align items vertically at the bottom
+  userInfo: {
+    marginBottom: 16
   },
 });
 
