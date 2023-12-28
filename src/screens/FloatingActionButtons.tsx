@@ -3,17 +3,17 @@ import { View, StyleSheet } from 'react-native';
 import NetworkImageActionButton from './NetworkImageActionButton';
 import ActionButton from './ActionButton';
 import TikTokStrings from '../theme/TikTokStrings';
+import TikTokImages from '../theme/TikTokImages';
 
 const FloatingActionButtons = () => {
   return (
     <View style={styles.container}>
       <View>
         <NetworkImageActionButton />
-        {ActionButton(TikTokStrings.likeImagePath, 26, 28, TikTokStrings.likeCount)}
-        {ActionButton(TikTokStrings.commentsImagePath, 26, 27, TikTokStrings.commentsCount)}
-        {ActionButton(TikTokStrings.shareImagePath, 28, 27, TikTokStrings.shareCount)}
-        {ActionButton(TikTokStrings.bookmarkImagePath, 24, 22, TikTokStrings.bookmarkCount)}
-        {ActionButton(TikTokStrings.refreshImagePath, 38, 38, TikTokStrings.flip)}
+        {ActionButton(TikTokImages.like, 26, 28, TikTokStrings.likeCount)}
+        {ActionButton(TikTokImages.comments, 26, 27, TikTokStrings.commentsCount)}
+        {ActionButton(TikTokImages.bookmark, 28, 27, TikTokStrings.shareCount)}
+        {ActionButton(TikTokImages.share, 24, 22, TikTokStrings.bookmarkCount)}
       </View>
     </View>
   );

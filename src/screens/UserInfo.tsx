@@ -1,15 +1,16 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import TikTokColors from '../theme/TikTokColors';
+import { CounterState } from '../store/data_store';
+import { useSelector } from 'react-redux';
 
 const UserInfo = () => {
-  let username = 'AP US History';
-  let description = '5.4 The compromise of 1850';
+  const currentMcq = useSelector((state: CounterState) => state.currentMcq);
 
   return (
     <View style={styles.container}>
-        <Text style={styles.apUsHistoryContainer}>{username}</Text>
-        <Text style={styles.additionalContainer}>{description}</Text>
+        <Text style={styles.apUsHistoryContainer}>{currentMcq.user.name}</Text>
+        <Text style={styles.additionalContainer}>{currentMcq.description}</Text>
     </View>
   );
 };

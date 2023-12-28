@@ -10,12 +10,16 @@
       "sha1": "5bbf5dde1bb57f25b910793a9519bfdd39b992c2"
     },
     {
+      "path": "src/assets/bookmark.png",
+      "sha1": "d45b5e4e27fbf65b2c16368ca91e924e513b100e"
+    },
+    {
       "path": "src/assets/bookmarks.png",
       "sha1": "a678c8f1512f2d943448cb4ac6ff391da6614929"
     },
     {
       "path": "src/assets/comments.png",
-      "sha1": "704ef51bd9d50f05e8b60cc7bdf1e30eb57c8701"
+      "sha1": "3be926558310e6de42e1f1f1519ebe5fb3ea6064"
     },
     {
       "path": "src/assets/correct.gif",
@@ -42,6 +46,10 @@
       "sha1": "c70510c41d49309e107092e30458feaef7d4f946"
     },
     {
+      "path": "src/assets/like.png",
+      "sha1": "c3577d7c7f5d0d3ba472d79ad216482f51512c4c"
+    },
+    {
       "path": "src/assets/play.png",
       "sha1": "cf31fb5c8021de677038783b9a20e72f533b1d70"
     },
@@ -59,7 +67,7 @@
     },
     {
       "path": "src/assets/share.png",
-      "sha1": "3cc5ac32cb00844452b193068195a3e06ff7fde6"
+      "sha1": "784a332d03b11f69a8d70ccc8863c7e806089e98"
     },
     {
       "path": "src/assets/tickmark.png",

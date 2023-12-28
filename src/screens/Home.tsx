@@ -86,7 +86,8 @@ const styles = StyleSheet.create({
   floatingActionButtons: {
     alignSelf: 'flex-end',
     marginLeft: 12,
-    marginBottom: 16
+    marginRight: 8,
+    marginBottom: 16,
   },
   pagerView: {
     flex: 1,

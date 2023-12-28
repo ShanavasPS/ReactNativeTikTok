@@ -2,9 +2,9 @@ import React from 'react';
 import { View, Image, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import TikTokColors from '../theme/TikTokColors';
 
-const ActionButton = (imageName: string, height: number, width: number, text: string) => {
-  const showLabel = text.length > 0;
 
+const ActionButton = (image: any, height: number, width: number, text: string) => {
+  const showLabel = text.length > 0;
   return (
     <TouchableOpacity
       style={styles.floatingButton}
@@ -14,7 +14,7 @@ const ActionButton = (imageName: string, height: number, width: number, text: st
     >
       <View style={styles.buttonContainer}>
         <Image
-          source={require('../assets/bookmarks.png')} // Replace with the correct path
+          source={image} // Replace with the correct path
           style={styles.buttonImage}
         />
         {showLabel && (
