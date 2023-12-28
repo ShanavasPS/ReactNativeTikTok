@@ -37,7 +37,7 @@ const AnswerOption = ({option, isOptionPressed, isCorrectAnswer}: ItemProps) => 
   const getImageSource = () => {
     if (isOptionPressed && wasThisOptionPressed) {
       return isCorrectAnswer
-        ? require('../assets/right.gif')
+        ? require('../assets/correct.gif')
         : require('../assets/wrong.gif');
     } else {
       return null;
