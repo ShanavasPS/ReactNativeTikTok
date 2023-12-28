@@ -47,9 +47,13 @@ const Home = () => {
             <TopBar />
             <View style={styles.container}>
               <View style={styles.pageContainer}>
-                <View style={[styles.questionContainer]}>
-                  <Text style={styles.questionText}>{item.question}</Text>
-                </View>
+                <Text style={styles.questionContainer}>
+                  <Text style={styles.roundedBackground}>
+                    <Text style={styles.questionText}>
+                      {item.question}
+                    </Text>
+                  </Text>
+                </Text>
                 <AnswerSelection item={item}></AnswerSelection>
                 <View style={styles.userInfo}>
                   <UserInfo></UserInfo>
@@ -83,7 +87,7 @@ const styles = StyleSheet.create({
     height: '50%',
     justifyContent: 'flex-start', // Center the content vertically
     paddingTop: 40,
-    paddingBottom: 40
+    paddingBottom: 40,
   },
   floatingActionButtons: {
     alignSelf: 'flex-end',
@@ -94,10 +98,17 @@ const styles = StyleSheet.create({
   pagerView: {
     flex: 1,
   },
+  roundedBackground: {
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+    borderRadius: 10, // Adjust this value for the desired border radius
+    padding: 20,
+  },
   questionText: {
     fontSize: 24,
     color: 'white',
     fontWeight: 'bold',
+    lineHeight: 38,
+    padding: 10
   },
   backgroundImage: {
     flex: 1,
