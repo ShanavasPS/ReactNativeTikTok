@@ -16,12 +16,14 @@ const AnswerOption = ({option, isOptionPressed, isCorrectAnswer}: ItemProps) => 
   const index = currentMcq.options.findIndex(element => element.id === option.id);
   const wasThisOptionPressed = currentMcq.buttonTaps[index];
   const onPress = () => {
-    console.log("pressed an options")
-    const index = currentMcq.options.findIndex(element => element.id === option.id);
-    console.log("selected index ", index);
-    console.log(currentMcq)
-    store.dispatch(updateButtonPress({index: index, didPress: true}));
-    console.log(currentMcq)
+    if(!currentMcq.isOptionPressed) {
+      console.log("pressed an options")
+      const index = currentMcq.options.findIndex(element => element.id === option.id);
+      console.log("selected index ", index);
+      console.log(currentMcq)
+      store.dispatch(updateButtonPress({index: index, didPress: true}));
+      console.log(currentMcq)
+    }
   };
 
   const getBackgroundColor = () => {
