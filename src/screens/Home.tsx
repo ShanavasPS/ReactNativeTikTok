@@ -81,7 +81,9 @@ const styles = StyleSheet.create({
   questionContainer: {
     flex: 1,
     height: '50%',
-    justifyContent: 'center', // Center the content vertically
+    justifyContent: 'flex-start', // Center the content vertically
+    paddingTop: 40,
+    paddingBottom: 40
   },
   floatingActionButtons: {
     alignSelf: 'flex-end',
