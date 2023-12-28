@@ -17,4 +17,6 @@ interface Option {
     question: string;
     options: Option[];
     user: UserData;
+    correct_options: Option[];
+    isOptionPressed: false;
   }

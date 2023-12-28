@@ -1,12 +1,22 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
 import TikTokColors from '../theme/TikTokColors';
-import { store } from '../store/data_store';
+import { CounterState, store, updateButtonPress } from '../store/data_store';
+import { useSelector } from 'react-redux';
 
-type ItemProps = {title: string};
+type ItemProps = {
+  title: string;
+  isCorrectAnswer: boolean; 
+};
 
-const AnswerOption = ({title}: ItemProps) => {
+const AnswerOption = ({title, isCorrectAnswer}: ItemProps) => {
+
+  const [showIcon, setShowIcon] = useState(false);
+  const currentMcq = useSelector((state: CounterState) => state.currentMcq);
+  
   const onPress = () => {
+    store.dispatch(updateButtonPress(true));
+    console.log(currentMcq)
   };
 
   return (
@@ -14,7 +24,7 @@ const AnswerOption = ({title}: ItemProps) => {
       <TouchableOpacity onPress={onPress} style={styles.touchableOpacity}>
         <View style={styles.innerContainer}>
           <Text style={styles.optionText}>{title}</Text>
-          <Image style={styles.iconImage} source={require('../assets/cross.png')} />
+          {currentMcq.isOptionPressed && <Image style={styles.iconImage} source={require('../assets/right.gif')} />}
         </View>
       </TouchableOpacity>
     </View>
@@ -45,14 +55,15 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontFamily: 'SF Pro Rounded',
     fontWeight: '500',
-    paddingRight: 12,
     flex: 1,
     flexWrap: 'wrap',
-    textShadowColor: 'rgba(0, 0, 0, 0.45)',
+    textShadowColor: 'rgba(0, 0, 0, 1)',
     textShadowOffset: { width: 1, height: 1.5 },
     textShadowRadius: 2,
   },
   iconImage: {
+    width: 56,
+    height: 56,
   },
 });
 

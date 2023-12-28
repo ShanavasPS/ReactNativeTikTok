@@ -50,12 +50,20 @@
       "sha1": "c09c46947dcbfd664ed421391f2b37af6d25d037"
     },
     {
+      "path": "src/assets/right.gif",
+      "sha1": "cda0ce7c9fc0298f1a47d3a7a045c1311202ac2c"
+    },
+    {
       "path": "src/assets/share.png",
       "sha1": "3cc5ac32cb00844452b193068195a3e06ff7fde6"
     },
     {
       "path": "src/assets/tickmark.png",
       "sha1": "41f40728e4f8399ef06af1650c60166100fd5d4d"
+    },
+    {
+      "path": "src/assets/wrong.gif",
+      "sha1": "0b815c65ba4ffcacaa979db7ee513dc004374c7f"
     }
   ]
 }

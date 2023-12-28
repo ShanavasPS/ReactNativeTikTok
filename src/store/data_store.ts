@@ -5,7 +5,7 @@ import { McqData } from '../model/options_model';
 
 export interface CounterState {
   value: number;
-  mcqData: McqData;
+  currentMcq: McqData;
   answerData: AnswerData;
   content: McqData[];
   currentPageIndex: number;
@@ -39,34 +39,27 @@ export const performAsyncOperation = createAsyncThunk(
 
 const initialState: CounterState = {
   value: 0,
-  mcqData: {
+  currentMcq: {
     type: '',
     id: 0,
     playlist: '',
     description: '',
     image: '',
     question: '',
-    options: [
-      { id: '1', answer: '' },
-      { id: '2', answer: '' },
-      // Add more options as needed
-    ],
+    options: [],
+    correct_options: [],
     user: {
       name: '',
       avatar: '',
     },
+    isOptionPressed: false,
   },
   answerData: {
     id: 0,
-    correct_options: [
-      // Provide default values for CorrectOption
-      { id: '1', answer: 'Example Answer 1' },
-      { id: '2', answer: 'Example Answer 2' },
-      // ... add more options as needed
-    ],
+    correct_options: [],
   },
   content: [],
-  currentPageIndex: 0
+  currentPageIndex: 0,
 };
 
 
@@ -84,19 +77,33 @@ const counterSlice = createSlice({
     },
     updateCurrentPageIndex: (state, action) => {
       state.currentPageIndex = action.payload;
+      if(state.currentPageIndex > state.content.length) {
+        state.currentMcq = state.content[state.currentPageIndex];
+        console.log("setting currentmcq from content");
+        console.log(state.currentMcq);
+      }
+    },
+    updateButtonPress: (state, action) => {
+      state.content[state.currentPageIndex].isOptionPressed = action.payload;
+      state.currentMcq.isOptionPressed = action.payload;
     },
   },
   extraReducers: builder => {
     builder.addCase(fetchNextForYouItem.fulfilled, (state, action) => {
       console.log("received payload inside the reducer")
-      state.mcqData = action.payload.mcqData;
-      state.answerData = action.payload.answerData;
-      state.content.push(state.mcqData);
+      const mcqData: McqData = action.payload.mcqData;
+      mcqData.isOptionPressed = false;
+      mcqData.correct_options = action.payload.answerData;
+      console.log("adding this mcqdata to content");
+      console.log(mcqData.isOptionPressed)
+      console.log(mcqData);
+      state.content.push(mcqData);
+      console.log("added mcqdata to content");
     });
   },
 })
 
-export const { incremented, decremented, updateCurrentPageIndex } = counterSlice.actions
+export const { incremented, decremented, updateCurrentPageIndex, updateButtonPress } = counterSlice.actions
 
 export const store = configureStore({
   reducer: counterSlice.reducer

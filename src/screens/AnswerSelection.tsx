@@ -20,7 +20,7 @@ const AnswerSelection = ({item}: {item: McqData}) => {
         <FlatList
             data={item.options}
             ItemSeparatorComponent={() => <View style={{ height: 8 }} />}
-            renderItem={({item}) => <AnswerOption title={item.answer} />}
+            renderItem={({item}) => <AnswerOption title={item.answer} isCorrectAnswer={false} />}
             keyExtractor={item => item.id}
         />
     </View>
