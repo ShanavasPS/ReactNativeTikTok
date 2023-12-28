@@ -37,12 +37,16 @@ const AnswerOption = ({title, isOptionPressed, isCorrectAnswer}: ItemProps) => {
     }
   };
 
+  const getIconImageStyle = () => {
+    return isOptionPressed && !isCorrectAnswer ? { transform: [{ rotate: '180deg' }] } : {};
+  };
+
   return (
     <View style={[styles.container, { backgroundColor: getBackgroundColor() }]}>
       <TouchableOpacity onPress={onPress} style={styles.touchableOpacity}>
         <View style={styles.innerContainer}>
           <Text style={styles.optionText}>{title}</Text>
-          {isOptionPressed && <Image style={styles.iconImage} source={getImageSource()} />}
+          {isOptionPressed && <Image style={[styles.iconImage, getIconImageStyle()]} source={getImageSource()} />}
         </View>
       </TouchableOpacity>
     </View>
