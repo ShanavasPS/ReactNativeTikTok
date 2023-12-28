@@ -1,11 +1,11 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import TikTokColors from '../theme/TikTokColors';
-import { CounterState } from '../store/data_store';
 import { useSelector } from 'react-redux';
+import { RootState } from '../store/data_store';
 
 const UserInfo = () => {
-  const currentMcq = useSelector((state: CounterState) => state.currentMcq);
+  const currentMcq = useSelector((state: RootState) => state.data.currentMcq);
 
   return (
     <View style={styles.container}>

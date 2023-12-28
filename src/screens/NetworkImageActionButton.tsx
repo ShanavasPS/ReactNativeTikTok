@@ -1,11 +1,10 @@
 import React from 'react';
 import { View, Image, TouchableOpacity, ActivityIndicator, StyleSheet } from 'react-native';
 import { useSelector } from 'react-redux'; // Assuming you're using Redux for state management
-import TikTokStrings from '../theme/TikTokStrings';
-import { CounterState } from '../store/data_store';
+import { RootState } from '../store/data_store';
 
 const NetworkImageActionButton = () => {
-  const currentMcq = useSelector((state: CounterState) => state.currentMcq);
+  const currentMcq = useSelector((state: RootState) => state.data.currentMcq);
 
   return (
     <TouchableOpacity

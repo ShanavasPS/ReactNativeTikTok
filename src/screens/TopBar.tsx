@@ -38,7 +38,7 @@ const TopBar = () => {
       justifyContent: 'center',
     },
     timeText: {
-      marginLeft: 4,
+      marginLeft: 6,
       fontSize: 16,
       fontWeight: '400',
       color: TikTokColors.selectedText,

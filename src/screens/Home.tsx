@@ -3,16 +3,17 @@ import { StyleSheet, TouchableOpacity, Image, Text, View, ImageBackground, SafeA
 import PagerView, { PagerViewOnPageSelectedEvent } from 'react-native-pager-view';
 import AnswerSelection from './AnswerSelection';
 import UserInfo from './UserInfo';
-import { CounterState, store, fetchNextForYouItem, performAsyncOperation } from '../store/data_store';
+import { RootState, store } from '../store/data_store';
+import { fetchNextForYouItem, performAsyncOperation } from '../store/data_slicer';
 import { useSelector } from 'react-redux';
 import Playlist from './Playlist';
 import TopBar from './TopBar';
 import FloatingActionButtons from './FloatingActionButtons';
 
 const Home = () => {
-  const content = useSelector((state: CounterState) => state.content);
-  const currentPageIndex = useSelector((state: CounterState) => state.currentPageIndex);
-  const imageUrl = 
+  const content = useSelector((state: RootState) => state.data.content);
+  const currentPageIndex = useSelector((state: RootState) => state.data.currentPageIndex);
+
   useEffect(() => {
     console.log("Inside useeffect")
     store.dispatch(fetchNextForYouItem());
@@ -102,6 +103,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.6)',
     borderRadius: 10, // Adjust this value for the desired border radius
     padding: 20,
+    overflow: 'hidden',
   },
   questionText: {
     fontSize: 24,

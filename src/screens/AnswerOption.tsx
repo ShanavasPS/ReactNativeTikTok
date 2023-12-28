@@ -1,7 +1,7 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React, { useState } from 'react'
-import TikTokColors from '../theme/TikTokColors';
-import { CounterState, store, updateButtonPress } from '../store/data_store';
+import React from 'react'
+import { RootState, store } from '../store/data_store';
+import { updateButtonPress } from '../store/data_slicer';
 import { useSelector } from 'react-redux';
 import { Option } from '../model/options_model';
 
@@ -12,7 +12,7 @@ type ItemProps = {
 };
 
 const AnswerOption = ({option, isOptionPressed, isCorrectAnswer}: ItemProps) => {
-  const currentMcq = useSelector((state: CounterState) => state.currentMcq);
+  const currentMcq = useSelector((state: RootState) => state.data.currentMcq);
   const index = currentMcq.options.findIndex(element => element.id === option.id);
   const wasThisOptionPressed = currentMcq.buttonTaps[index];
   const onPress = () => {
