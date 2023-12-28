@@ -3,32 +3,37 @@ import React, { useState } from 'react'
 import TikTokColors from '../theme/TikTokColors';
 import { CounterState, store, updateButtonPress } from '../store/data_store';
 import { useSelector } from 'react-redux';
+import { Option } from '../model/options_model';
 
 type ItemProps = {
-  title: string;
+  option: Option;
   isOptionPressed: boolean;
   isCorrectAnswer: boolean; 
 };
 
-const AnswerOption = ({title, isOptionPressed, isCorrectAnswer}: ItemProps) => {
+const AnswerOption = ({option, isOptionPressed, isCorrectAnswer}: ItemProps) => {
   const currentMcq = useSelector((state: CounterState) => state.currentMcq);
+  const index = currentMcq.options.findIndex(element => element.id === option.id);
+  const wasThisOptionPressed = currentMcq.buttonTaps[index];
   const onPress = () => {
     console.log("pressed an options")
+    const index = currentMcq.options.findIndex(element => element.id === option.id);
+    console.log("selected index ", index);
     console.log(currentMcq)
-    store.dispatch(updateButtonPress(true));
+    store.dispatch(updateButtonPress({index: index, didPress: true}));
     console.log(currentMcq)
   };
 
   const getBackgroundColor = () => {
     if (isOptionPressed) {
-      return isCorrectAnswer ? 'rgba(40, 177, 143, 0.70)' : 'rgba(220, 95, 95, 0.70)';
+      return isCorrectAnswer ? 'rgba(40, 177, 143, 0.70)' : wasThisOptionPressed ? 'rgba(220, 95, 95, 0.70)' : 'rgba(255, 255, 255, 0.5)';
     } else {
       return 'rgba(255, 255, 255, 0.5)';
     }
   };
 
   const getImageSource = () => {
-    if (isOptionPressed) {
+    if (isOptionPressed && wasThisOptionPressed) {
       return isCorrectAnswer
         ? require('../assets/right.gif')
         : require('../assets/wrong.gif');
@@ -45,7 +50,7 @@ const AnswerOption = ({title, isOptionPressed, isCorrectAnswer}: ItemProps) => {
     <View style={[styles.container, { backgroundColor: getBackgroundColor() }]}>
       <TouchableOpacity onPress={onPress} style={styles.touchableOpacity}>
         <View style={styles.innerContainer}>
-          <Text style={styles.optionText}>{title}</Text>
+          <Text style={styles.optionText}>{option.answer}</Text>
           {isOptionPressed && <Image style={[styles.iconImage, getIconImageStyle()]} source={getImageSource()} />}
         </View>
       </TouchableOpacity>
@@ -87,6 +92,5 @@ const styles = StyleSheet.create({
     height: 56,
   },
 });
-
 
 export default AnswerOption

@@ -1,4 +1,4 @@
-interface Option {
+export interface Option {
     id: string;
     answer: string;
   }
@@ -19,4 +19,5 @@ interface Option {
     user: UserData;
     correct_options: Option[];
     isOptionPressed: false;
+    buttonTaps: boolean[];
   }

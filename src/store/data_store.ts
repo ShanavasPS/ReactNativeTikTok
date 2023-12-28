@@ -54,6 +54,7 @@ const initialState: CounterState = {
       avatar: '',
     },
     isOptionPressed: false,
+    buttonTaps: []
   },
   answerData: {
     id: 0,
@@ -88,9 +89,14 @@ const counterSlice = createSlice({
     },
     updateButtonPress: (state, action) => {
       console.log("update button press")
+      const { index, didPress } = action.payload;
+      console.log("index is ", index);
+      console.log("didPress is ", didPress);
       console.log(state.currentPageIndex)
-      state.content[state.currentPageIndex].isOptionPressed = action.payload;
-      state.currentMcq.isOptionPressed = action.payload;
+      state.content[state.currentPageIndex].isOptionPressed = didPress;
+      state.content[state.currentPageIndex].buttonTaps[index] = didPress;
+      state.currentMcq.isOptionPressed = didPress;
+      state.currentMcq.buttonTaps[index] = didPress;
     },
   },
   extraReducers: builder => {
@@ -98,6 +104,7 @@ const counterSlice = createSlice({
       console.log("received payload inside the reducer")
       const mcqData: McqData = action.payload.mcqData;
       mcqData.isOptionPressed = false;
+      mcqData.buttonTaps = Array.from({ length: mcqData.options.length }, () => false);
       const answerData: AnswerData = action.payload.answerData;
       mcqData.correct_options = answerData.correct_options;
       console.log("adding this mcqdata to content");

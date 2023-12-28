@@ -18,7 +18,7 @@ const AnswerSelection = ({ item }: { item: McqData }) => {
         ItemSeparatorComponent={() => <View style={{ height: 8 }} />}
         renderItem={({ item: option }) => (
           <AnswerOption
-            title={option.answer}
+            option={option}
             isOptionPressed={item.isOptionPressed}
             isCorrectAnswer={item.correct_options.some(correctOption => correctOption.id === option.id)}
           />
