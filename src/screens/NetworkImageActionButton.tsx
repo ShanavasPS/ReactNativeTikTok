@@ -2,8 +2,11 @@ import React from 'react';
 import { View, Image, TouchableOpacity, ActivityIndicator, StyleSheet } from 'react-native';
 import { useSelector } from 'react-redux'; // Assuming you're using Redux for state management
 import TikTokStrings from '../theme/TikTokStrings';
+import { CounterState } from '../store/data_store';
 
 const NetworkImageActionButton = () => {
+  const currentMcq = useSelector((state: CounterState) => state.currentMcq);
+
   return (
     <TouchableOpacity
       style={styles.floatingButton}
@@ -13,7 +16,7 @@ const NetworkImageActionButton = () => {
     >
       <View style={{ width: 45, height: 55, alignItems: 'center' }}>
         <Image
-          source={{ uri: '../assets/bookmarks.png' }}
+          source={{ uri: currentMcq.user.avatar }}
           style={styles.avatarImage}
           defaultSource={require('../assets/ellipse21.png')} // Replace with the correct path
         />
@@ -29,8 +32,6 @@ const NetworkImageActionButton = () => {
 const styles = StyleSheet.create({
   floatingButton: {
     backgroundColor: 'transparent',
-    elevation: 0,
-    bottom: 36,
   },
   avatarImage: {
     width: 45,
@@ -39,7 +40,7 @@ const styles = StyleSheet.create({
   followImage: {
     width: 24,
     height: 24,
-    bottom: 0,
+    bottom: 15
   },
 });
 

@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
   floatingButton: {
     backgroundColor: 'transparent',
     elevation: 0,
-    marginBottom: 4,
+    marginTop: 15
   },
   buttonContainer: {
     alignItems: 'center',
