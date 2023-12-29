@@ -41,39 +41,48 @@ const Home = () => {
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <PagerView
-        style={styles.pagerView}
-        initialPage={0}
-        orientation={'vertical'}
-        onPageSelected={handlePageSelected}>
-        {content.map((item, index) => (
-          <ImageBackground
-            key={index.toString()}
-            source={{uri: item.image}}
-            style={styles.backgroundImage}>
-            <DataContext.Provider value={item}>
-              <TopBar />
-              <View style={styles.container}>
-                <View style={styles.pageContainer}>
-                  <Text style={styles.questionContainer}>
-                    <Text style={styles.roundedBackground}>
-                      <Text style={styles.questionText}>{item.question}</Text>
+      {content.length === 0 ? (
+        // Show loading screen
+        <View style={styles.loadingContainer}>
+          <View style={styles.loadingContent}>
+            <Text style={styles.loadingText}>Loading...</Text>
+          </View>
+        </View>
+      ) : (
+        <PagerView
+          style={styles.pagerView}
+          initialPage={0}
+          orientation={'vertical'}
+          onPageSelected={handlePageSelected}>
+          {content.map((item, index) => (
+            <ImageBackground
+              key={index.toString()}
+              source={{uri: item.image}}
+              style={styles.backgroundImage}>
+              <DataContext.Provider value={item}>
+                <TopBar />
+                <View style={styles.container}>
+                  <View style={styles.pageContainer}>
+                    <Text style={styles.questionContainer}>
+                      <Text style={styles.roundedBackground}>
+                        <Text style={styles.questionText}>{item.question}</Text>
+                      </Text>
                     </Text>
-                  </Text>
-                  <AnswerSelection />
-                  <View style={styles.userInfo}>
-                    <UserInfo />
+                    <AnswerSelection />
+                    <View style={styles.userInfo}>
+                      <UserInfo />
+                    </View>
+                  </View>
+                  <View style={styles.floatingActionButtons}>
+                    <FloatingActionButtons />
                   </View>
                 </View>
-                <View style={styles.floatingActionButtons}>
-                  <FloatingActionButtons />
-                </View>
-              </View>
-              <Playlist />
-            </DataContext.Provider>
-          </ImageBackground>
-        ))}
-      </PagerView>
+                <Playlist />
+              </DataContext.Provider>
+            </ImageBackground>
+          ))}
+        </PagerView>
+      )}
     </SafeAreaView>
   );
 };
@@ -81,6 +90,21 @@ const Home = () => {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
+  },
+  loadingContainer: {
+    flex: 1,
+    backgroundColor: 'black',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  loadingContent: {
+    backgroundColor: 'rgba(0,0,0,0.8)',
+    padding: 20,
+    borderRadius: 10,
+  },
+  loadingText: {
+    color: 'white',
+    fontSize: 18,
   },
   container: {
     flex: 1,
