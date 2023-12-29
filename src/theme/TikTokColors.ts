@@ -17,6 +17,10 @@ const TikTokColors = {
     unselectedText: 'white70',
     selectedText: 'white',
     unselectedBottomBarText: 'rgba(255, 255, 255, 0.4)',
+    correctAnswerBackground: 'rgba(40, 177, 143, 0.70)',
+    wrongAnswerBackground: 'rgba(220, 95, 95, 0.70)',
+    optionBackground: 'rgba(255, 255, 255, 0.5)',
+    transparentBackground: 'transparent'
   } as const;
   
   export default TikTokColors;

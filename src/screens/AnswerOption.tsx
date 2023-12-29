@@ -1,10 +1,11 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React from 'react'
+import { Image, Animated , StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import React, { useEffect, useState } from 'react'
 import { RootState, store } from '../store/data_store';
 import { updateButtonPress } from '../store/data_slicer';
 import { useSelector } from 'react-redux';
 import { Option } from '../model/options_model';
 import TikTokImages from '../theme/TikTokImages';
+import TikTokColors from '../theme/TikTokColors';
 
 type ItemProps = {
   option: Option;
@@ -16,8 +17,11 @@ const AnswerOption = ({option, isOptionPressed, isCorrectAnswer}: ItemProps) => 
   const currentMcq = useSelector((state: RootState) => state.data.currentMcq);
   const index = currentMcq.options.findIndex(element => element.id === option.id);
   const wasThisOptionPressed = currentMcq.buttonTaps[index];
+  const [slideAnimation] = useState(new Animated.Value(400)); // Initial position outside the screen
+
   const onPress = () => {
     if(!currentMcq.isOptionPressed) {
+      animateRightToLeft();
       console.log("pressed an options")
       const index = currentMcq.options.findIndex(element => element.id === option.id);
       console.log("selected index ", index);
@@ -27,11 +31,21 @@ const AnswerOption = ({option, isOptionPressed, isCorrectAnswer}: ItemProps) => 
     }
   };
 
+  const animateRightToLeft = () => {
+    Animated.timing(slideAnimation, {
+      toValue: 0,
+      duration: 1000,
+      useNativeDriver: false,
+    }).start();
+  };
+
   const getBackgroundColor = () => {
     if (isOptionPressed) {
-      return isCorrectAnswer ? 'rgba(40, 177, 143, 0.70)' : wasThisOptionPressed ? 'rgba(220, 95, 95, 0.70)' : 'rgba(255, 255, 255, 0.5)';
+      return isCorrectAnswer ?
+        TikTokColors.correctAnswerBackground : wasThisOptionPressed ?
+          TikTokColors.wrongAnswerBackground : TikTokColors.transparentBackground;
     } else {
-      return 'rgba(255, 255, 255, 0.5)';
+      return TikTokColors.transparentBackground;
     }
   };
 
@@ -50,11 +64,32 @@ const AnswerOption = ({option, isOptionPressed, isCorrectAnswer}: ItemProps) => 
   };
 
   return (
-    <View style={[styles.container, { backgroundColor: getBackgroundColor() }]}>
+    <View style={styles.container}>
       <TouchableOpacity onPress={onPress} style={styles.touchableOpacity}>
-        <View style={styles.innerContainer}>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <Animated.View
+            style={[
+              styles.innerContainer,
+              {
+                transform: [
+                  {
+                    translateX: slideAnimation
+                  },
+                ],
+                backgroundColor: getBackgroundColor(),
+              },
+            ]}
+          />
           <Text style={styles.optionText}>{option.answer}</Text>
-          {isOptionPressed && <Image style={[styles.iconImage, getIconImageStyle()]} source={getImageSource()} />}
+          {isOptionPressed && (
+            <Image
+              style={[
+                styles.iconImage,
+                getIconImageStyle(),
+              ]}
+              source={getImageSource()}
+            />
+          )}
         </View>
       </TouchableOpacity>
     </View>
@@ -68,16 +103,19 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
     flexDirection: 'row',
-    paddingHorizontal: 12,
-    paddingVertical: 12,
+
+    backgroundColor: TikTokColors.optionBackground
   },
   touchableOpacity: {
     flex: 1,
   },
   innerContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    flex: 1,
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    borderRadius: 8,
+    paddingHorizontal: 12,
+    paddingVertical: 12,
   },
   optionText: {
     color: 'white',
@@ -89,6 +127,9 @@ const styles = StyleSheet.create({
     textShadowColor: 'rgba(0, 0, 0, 1)',
     textShadowOffset: { width: 1, height: 1.5 },
     textShadowRadius: 2,
+    zIndex: 2,
+    paddingHorizontal: 12,
+    paddingVertical: 12,
   },
   iconImage: {
     width: 56,
