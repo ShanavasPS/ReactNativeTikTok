@@ -35,7 +35,7 @@ const AnswerOption = () => {
   const animateRightToLeft = useCallback(() => {
     Animated.timing(slideAnimation, {
       toValue: 0,
-      duration: 1000,
+      duration: 500,
       useNativeDriver: false,
     }).start();
   }, [slideAnimation]);
