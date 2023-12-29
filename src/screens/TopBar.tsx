@@ -5,6 +5,7 @@ import TikTokStrings from '../theme/TikTokStrings';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store/data_store';
 import { getDuration } from '../utils/utils';
+import TikTokImages from '../theme/TikTokImages';
 
 const TopBar = () => {
     const elapsedTime = useSelector((state: RootState) => state.time.elapsedTime);
@@ -12,7 +13,7 @@ const TopBar = () => {
     return (
       <View style={styles.container}>
         <View style={styles.timeContainer}>
-          <Image source={require('../assets/time.png')} />
+          <Image source={TikTokImages.time} />
           <Text style={styles.timeText}>{getDuration(elapsedTime)}</Text>
         </View>
   
@@ -22,7 +23,7 @@ const TopBar = () => {
         </View>
   
         <View style={styles.searchContainer}>
-          <Image source={require('../assets/search.png')} />
+          <Image source={TikTokImages.search} />
         </View>
       </View>
     );

@@ -4,6 +4,7 @@ import { RootState, store } from '../store/data_store';
 import { updateButtonPress } from '../store/data_slicer';
 import { useSelector } from 'react-redux';
 import { Option } from '../model/options_model';
+import TikTokImages from '../theme/TikTokImages';
 
 type ItemProps = {
   option: Option;
@@ -37,8 +38,8 @@ const AnswerOption = ({option, isOptionPressed, isCorrectAnswer}: ItemProps) => 
   const getImageSource = () => {
     if (isOptionPressed && wasThisOptionPressed) {
       return isCorrectAnswer
-        ? require('../assets/correct.gif')
-        : require('../assets/wrong.gif');
+        ? TikTokImages.correct
+        : TikTokImages.wrong
     } else {
       return null;
     }

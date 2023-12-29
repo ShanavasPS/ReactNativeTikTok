@@ -3,6 +3,8 @@ import { View, Text, Image, StyleSheet } from 'react-native';
 import TikTokColors from '../theme/TikTokColors';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store/data_store';
+import TikTokStrings from '../theme/TikTokStrings';
+import TikTokImages from '../theme/TikTokImages';
 
 const Playlist = () => {
   const currentMcq = useSelector((state: RootState) => state.data.currentMcq);
@@ -10,12 +12,12 @@ const Playlist = () => {
   return (
     <View style={[styles.container, { backgroundColor: TikTokColors.playlistBackgroundColor }]}>
       <View style={styles.contentContainer}>
-        <Image source={require('../assets/play.png')} style={styles.playIcon} />
+        <Image source={TikTokImages.play} style={styles.playIcon} />
         <Text style={[styles.playlistText, { color: TikTokColors.selectedText }]}>
-        Playlist • {currentMcq.playlist}
+          {TikTokStrings.playlist}{currentMcq.playlist}
         </Text>
         <View style={styles.spacer} />
-        <Image source={require('../assets/arrow.png')} style={styles.arrowIcon} />
+        <Image source={TikTokImages.arrow} style={styles.arrowIcon} />
       </View>
     </View>
   );

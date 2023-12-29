@@ -5,6 +5,7 @@ import Discover from "../screens/Discover"
 import Home from "../screens/Home"
 import Profile from "../screens/Profile"
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import TikTokImages from "../theme/TikTokImages"
 
 const Tab = createBottomTabNavigator();
 
@@ -25,15 +26,15 @@ const TabNavigator = () => {
           let iconSource;
 
           if (route.name === 'Home') {
-            iconSource = require('../assets/home.png');
+            iconSource = TikTokImages.home;
           } else if (route.name === 'Discover') {
-            iconSource = require('../assets/discover.png');
+            iconSource = TikTokImages.discover;
           } else if (route.name === 'Activity') {
-            iconSource = require('../assets/activity.png');
+            iconSource = TikTokImages.activity;
           } else if (route.name === 'Bookmarks') {
-            iconSource = require('../assets/bookmarks.png');
+            iconSource = TikTokImages.bookmarks;
           } else if (route.name === 'Profile') {
-            iconSource = require('../assets/profile.png');
+            iconSource = TikTokImages.profile;
           }
 
           return <Image source={iconSource} style={{ tintColor: color, width: size, height: size }} />;

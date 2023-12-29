@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Image, TouchableOpacity, ActivityIndicator, StyleSheet } from 'react-native';
 import { useSelector } from 'react-redux'; // Assuming you're using Redux for state management
 import { RootState } from '../store/data_store';
+import TikTokImages from '../theme/TikTokImages';
 
 const NetworkImageActionButton = () => {
   const currentMcq = useSelector((state: RootState) => state.data.currentMcq);
@@ -17,10 +18,10 @@ const NetworkImageActionButton = () => {
         <Image
           source={{ uri: currentMcq.user.avatar }}
           style={styles.avatarImage}
-          defaultSource={require('../assets/ellipse21.png')} // Replace with the correct path
+          defaultSource={TikTokImages.ellipse21} // Replace with the correct path
         />
           <Image
-            source={require('../assets/follow.png')} // Replace with the correct path
+            source={TikTokImages.follow} // Replace with the correct path
             style={styles.followImage}
           />
       </View>
