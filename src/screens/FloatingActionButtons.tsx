@@ -12,26 +12,18 @@ const FloatingActionButtons = () => {
         <NetworkImageActionButton />
         <ActionButton
           image={TikTokImages.like}
-          height={26}
-          width={28}
           text={TikTokStrings.likeCount}
         />
         <ActionButton
           image={TikTokImages.comments}
-          height={26}
-          width={27}
           text={TikTokStrings.commentsCount}
         />
         <ActionButton
           image={TikTokImages.bookmark}
-          height={28}
-          width={27}
           text={TikTokStrings.shareCount}
         />
         <ActionButton
           image={TikTokImages.share}
-          height={24}
-          width={22}
           text={TikTokStrings.bookmarkCount}
         />
       </View>
