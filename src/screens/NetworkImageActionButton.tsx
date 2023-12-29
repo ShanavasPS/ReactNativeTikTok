@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { View, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import TikTokImages from '../theme/TikTokImages';
-import { OptionContext } from '../contexts/option_context';
+import { DataContext } from '../contexts/data_context';
 
 const NetworkImageActionButton = () => {
-  const currentMcq = useContext(OptionContext);  
+  const currentMcq = useContext(DataContext);  
 
   return (
     <TouchableOpacity

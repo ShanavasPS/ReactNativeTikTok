@@ -3,10 +3,10 @@ import { View, Text, Image, StyleSheet } from 'react-native';
 import TikTokColors from '../theme/TikTokColors';
 import TikTokStrings from '../theme/TikTokStrings';
 import TikTokImages from '../theme/TikTokImages';
-import { OptionContext } from '../contexts/option_context';
+import { DataContext } from '../contexts/data_context';
 
 const Playlist = () => {
-  const currentMcq = useContext(OptionContext);  
+  const currentMcq = useContext(DataContext);  
   return (
     <View style={[styles.container, { backgroundColor: TikTokColors.playlistBackgroundColor }]}>
       <View style={styles.contentContainer}>

@@ -24,5 +24,5 @@ let defaultMcq: McqData = {
     answer: ""
   }
 
-  export const OptionContext = createContext(defaultMcq);
-  export const SelectedOptionContext = createContext({index, option});
+  export const DataContext = createContext(defaultMcq);
+  export const OptionContext = createContext({index, option});

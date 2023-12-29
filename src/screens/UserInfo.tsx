@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import TikTokColors from '../theme/TikTokColors';
-import { OptionContext } from '../contexts/option_context';
+import { DataContext } from '../contexts/data_context';
 
 const UserInfo = () => {
-  const item = useContext(OptionContext);
+  const item = useContext(DataContext);
   const normalText = item.description.split(/#[^ ]+/);
   const matches = item.description.match(/#[^ ]+/g);
 

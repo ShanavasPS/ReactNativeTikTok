@@ -4,11 +4,11 @@ import { store } from '../store/data_store';
 import { updateButtonPress } from '../store/data_slicer';
 import TikTokImages from '../theme/TikTokImages';
 import TikTokColors from '../theme/TikTokColors';
-import { OptionContext, SelectedOptionContext } from '../contexts/option_context';
+import { DataContext, OptionContext } from '../contexts/data_context';
 
 const AnswerOption = () => {
-  const item = useContext(OptionContext);
-  const { index, option } = useContext(SelectedOptionContext);
+  const item = useContext(DataContext);
+  const { index, option } = useContext(OptionContext);
   const isOptionPressed = item.isOptionPressed
   const isCorrectAnswer= item.correct_options.some(correctOption => correctOption.id === option.id)
   const wasThisOptionPressed= item.buttonTaps[index]

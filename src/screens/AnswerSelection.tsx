@@ -5,19 +5,19 @@ import {
   View,
 } from 'react-native';
 import AnswerOption from './AnswerOption';
-import { OptionContext, SelectedOptionContext } from '../contexts/option_context';
+import { DataContext, OptionContext } from '../contexts/data_context';
 
 const AnswerSelection = () => {
-  const item = useContext(OptionContext);
+  const item = useContext(DataContext);
   return (
     <View style={styles.container}>
       <FlatList
         data={item.options}
         ItemSeparatorComponent={() => <View style={{ height: 8 }} />}
         renderItem={({ item: option, index }) => (
-          <SelectedOptionContext.Provider value={{index, option}}>
+          <OptionContext.Provider value={{index, option}}>
             <AnswerOption/>
-          </SelectedOptionContext.Provider>          
+          </OptionContext.Provider>          
         )}
         keyExtractor={(option) => option.id}
       />
