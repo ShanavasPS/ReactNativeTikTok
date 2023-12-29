@@ -50,13 +50,9 @@ const AnswerOption = ({option, isOptionPressed, isCorrectAnswer}: ItemProps) => 
   };
 
   const getImageSource = () => {
-    if (isOptionPressed && wasThisOptionPressed) {
-      return isCorrectAnswer
-        ? TikTokImages.correct
-        : TikTokImages.wrong
-    } else {
-      return null;
-    }
+    return isCorrectAnswer
+      ? TikTokImages.correct
+      : TikTokImages.wrong
   };
 
   const getIconImageStyle = () => {
@@ -81,7 +77,7 @@ const AnswerOption = ({option, isOptionPressed, isCorrectAnswer}: ItemProps) => 
             ]}
           />
           <Text style={styles.optionText}>{option.answer}</Text>
-          {isOptionPressed && (
+          {(isOptionPressed && wasThisOptionPressed) && (
             <Image
               style={[
                 styles.iconImage,

@@ -15,15 +15,19 @@ const NetworkImageActionButton = () => {
       }}
     >
       <View style={{ width: 45, height: 55, alignItems: 'center' }}>
-        <Image
-          source={{ uri: currentMcq.user.avatar }}
-          style={styles.avatarImage}
-          defaultSource={TikTokImages.ellipse21} // Replace with the correct path
-        />
+        {currentMcq.user.avatar && (
           <Image
-            source={TikTokImages.follow} // Replace with the correct path
+            source={{ uri: currentMcq.user.avatar }}
+            style={styles.avatarImage}
+            defaultSource={TikTokImages.like}
+          />
+        )}
+        {currentMcq.user.avatar && (
+          <Image
+            source={TikTokImages.follow}
             style={styles.followImage}
           />
+        )}
       </View>
     </TouchableOpacity>
   );
