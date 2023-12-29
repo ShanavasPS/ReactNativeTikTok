@@ -28,20 +28,21 @@ export const fetchPage = createAsyncThunk(
     // Access current store state using getState()
     const currentState = getState() as RootState;
 
-    // Access specific values from the current state
-    const content = currentState.data.content;
-    await store.dispatch(updateCurrentPageIndex(pageIndex));
+    if(currentState.data.currentPageIndex != pageIndex) {
+        // Access specific values from the current state
+        const content = currentState.data.content;
+        await store.dispatch(updateCurrentPageIndex(pageIndex));
 
-    if(pageIndex > content.length - 5) {
-        let count = 5 - (content.length - pageIndex)
-        console.log("count is ", count)
-        while(count > 0) {
-            console.log("number of elements is less")
-            await store.dispatch(fetchNextForYouItem());
-            count--;
+        if(pageIndex > content.length - 5) {
+            let count = 5 - (content.length - pageIndex)
+            console.log("count is ", count)
+            while(count > 0) {
+                console.log("number of elements is less")
+                await store.dispatch(fetchNextForYouItem());
+                count--;
+            }
         }
     }
-
     return;
   }
 );
@@ -69,7 +70,7 @@ const initialState: DataState = {
     correct_options: [],
   },
   content: [],
-  currentPageIndex: 0,
+  currentPageIndex: -1,
 };
 
 
