@@ -22,6 +22,7 @@ const AnswerSelection = ({ item }: { item: McqData }) => {
             option={option}
             isOptionPressed={item.isOptionPressed}
             isCorrectAnswer={item.correct_options.some(correctOption => correctOption.id === option.id)}
+            wasThisOptionPressed={item.buttonTaps[index]}
           />
         )}
         keyExtractor={(option) => option.id}

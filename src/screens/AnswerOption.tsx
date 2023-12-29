@@ -11,12 +11,11 @@ type ItemProps = {
   index: number;
   option: Option;
   isOptionPressed: boolean;
-  isCorrectAnswer: boolean; 
+  isCorrectAnswer: boolean;
+  wasThisOptionPressed: boolean;
 };
 
-const AnswerOption = ({index, option, isOptionPressed, isCorrectAnswer}: ItemProps) => {
-  const currentMcq = useSelector((state: RootState) => state.data.currentMcq);
-  const wasThisOptionPressed = currentMcq.buttonTaps[index];
+const AnswerOption = ({index, option, isOptionPressed, isCorrectAnswer, wasThisOptionPressed}: ItemProps) => {
   const [slideAnimation] = useState(new Animated.Value(0));
 
   const onInnerContainerLayout = (event: LayoutChangeEvent) => {
@@ -27,13 +26,11 @@ const AnswerOption = ({index, option, isOptionPressed, isCorrectAnswer}: ItemPro
   };
 
   const onPress = () => {
-    if(!currentMcq.isOptionPressed) {
+    if(!isOptionPressed) {
       animateRightToLeft();
       console.log("pressed an options")
       console.log("selected index ", index);
-      console.log(currentMcq)
       store.dispatch(updateButtonPress({index: index, didPress: true}));
-      console.log(currentMcq)
     }
   };
 
