@@ -14,7 +14,7 @@ const NetworkImageActionButton = () => {
         // Handle button press
       }}
     >
-      <View style={{ width: 45, height: 55, alignItems: 'center' }}>
+      <View style={styles.avatarContainer}>
         {currentMcq.user.avatar && (
           <Image
             source={{ uri: currentMcq.user.avatar }}
@@ -22,29 +22,40 @@ const NetworkImageActionButton = () => {
             defaultSource={TikTokImages.like}
           />
         )}
-        {currentMcq.user.avatar && (
-          <Image
-            source={TikTokImages.follow}
-            style={styles.followImage}
-          />
-        )}
       </View>
+      {currentMcq.user.avatar && (
+        <Image
+          source={TikTokImages.follow}
+          style={styles.followImage}
+        />
+      )}
     </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
   floatingButton: {
-    backgroundColor: 'transparent',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  avatarContainer: {
+    width: 47,
+    height: 47,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderColor: 'white', // Add white border color
+    borderWidth: 1, // Add border width
+    borderRadius: 23.5,
   },
   avatarImage: {
     width: 45,
     height: 45,
+    borderRadius: 22.5
   },
   followImage: {
     width: 24,
     height: 24,
-    bottom: 15
+    bottom: 15,
   },
 });
 
