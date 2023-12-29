@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux';
 import Playlist from './Playlist';
 import TopBar from './TopBar';
 import FloatingActionButtons from './FloatingActionButtons';
+import { incrementElapsedTime } from '../store/timer_slicer';
 
 const Home = () => {
   const content = useSelector((state: RootState) => state.data.content);
@@ -17,6 +18,15 @@ const Home = () => {
   useEffect(() => {
     console.log("Inside useeffect")
     store.dispatch(fetchNextForYouItem());
+
+    const timerId = setInterval(() => {
+      store.dispatch(incrementElapsedTime());
+    }, 1000);
+
+    // Clear the timer when the component unmounts
+    return () => {
+      clearInterval(timerId);
+    };
   }, []);
 
   useEffect(() => {

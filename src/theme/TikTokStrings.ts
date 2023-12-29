@@ -18,6 +18,9 @@ class TikTokStrings {
     static readonly bookmarkCount = "203";
     static readonly flip = "Flip";
     static readonly playlist = "Playlist • ";
+    static readonly secondPostFix = "s";
+    static readonly minutePostFix = "m";
+    static readonly hourPostFix = "h";
     static readonly ellipsesImagePath = "../assets/ellipse21.png";
     static readonly followImagePath = "../assets/follow.png";
     static readonly likeImagePath = "../assets/like.png";

@@ -2,13 +2,18 @@ import React from 'react';
 import { View, Text, Image, StyleSheet, StatusBar } from 'react-native';
 import TikTokColors from '../theme/TikTokColors';
 import TikTokStrings from '../theme/TikTokStrings';
+import { useSelector } from 'react-redux';
+import { RootState } from '../store/data_store';
+import { getDuration } from '../utils/utils';
 
 const TopBar = () => {
+    const elapsedTime = useSelector((state: RootState) => state.time.elapsedTime);
+
     return (
       <View style={styles.container}>
         <View style={styles.timeContainer}>
           <Image source={require('../assets/time.png')} />
-          <Text style={styles.timeText}>1 sec</Text>
+          <Text style={styles.timeText}>{getDuration(elapsedTime)}</Text>
         </View>
   
         <View style={styles.forYouContainer}>
