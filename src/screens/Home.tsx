@@ -4,7 +4,7 @@ import PagerView, { PagerViewOnPageSelectedEvent } from 'react-native-pager-view
 import AnswerSelection from './AnswerSelection';
 import UserInfo from './UserInfo';
 import { RootState, store } from '../store/data_store';
-import { fetchNextForYouItem, performAsyncOperation } from '../store/data_slicer';
+import { fetchNextForYouItem, fetchPage } from '../store/data_slicer';
 import { useSelector } from 'react-redux';
 import Playlist from './Playlist';
 import TopBar from './TopBar';
@@ -13,7 +13,6 @@ import { incrementElapsedTime } from '../store/timer_slicer';
 
 const Home = () => {
   const content = useSelector((state: RootState) => state.data.content);
-  const currentPageIndex = useSelector((state: RootState) => state.data.currentPageIndex);
 
   useEffect(() => {
     console.log("Inside useeffect")
@@ -29,17 +28,11 @@ const Home = () => {
     };
   }, []);
 
-  useEffect(() => {
-    console.log("currentPageIndex is", currentPageIndex)
-  }, [currentPageIndex]);
-
   const handlePageSelected = (e: PagerViewOnPageSelectedEvent) => {
     const { position } = e.nativeEvent;
     console.log('Current Card Index', position);
-    store.dispatch(performAsyncOperation(position));
+    store.dispatch(fetchPage(position));
   };
-
-  const image = {uri: 'https://legacy.reactjs.org/logo-og.png'};
 
   return (
     <SafeAreaView style={{ flex: 1 }}>

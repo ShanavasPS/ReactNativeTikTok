@@ -41,7 +41,7 @@ const AnswerOption = ({option, isOptionPressed, isCorrectAnswer}: ItemProps) => 
   const animateRightToLeft = () => {
     Animated.timing(slideAnimation, {
       toValue: 0,
-      duration: 500,
+      duration: 1000,
       useNativeDriver: false,
     }).start();
   };

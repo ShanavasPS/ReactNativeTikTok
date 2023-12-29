@@ -21,9 +21,10 @@ export const fetchNextForYouItem = createAsyncThunk('data/fetchNextForYouItem', 
   return { mcqData, answerData };
 });
 
-export const performAsyncOperation = createAsyncThunk(
-  'data/performAsyncOperation',
+export const fetchPage = createAsyncThunk(
+  'data/fetchPage',
   async (pageIndex: number, { getState }) => {
+    console.log("createasync was called");
     // Access current store state using getState()
     const currentState = getState() as RootState;
 
@@ -32,8 +33,13 @@ export const performAsyncOperation = createAsyncThunk(
     await store.dispatch(updateCurrentPageIndex(pageIndex));
 
     if(pageIndex > content.length - 5) {
-      console.log("number of elements is less")
-      await store.dispatch(fetchNextForYouItem());
+        let count = 5 - (content.length - pageIndex)
+        console.log("count is ", count)
+        while(count > 0) {
+            console.log("number of elements is less")
+            await store.dispatch(fetchNextForYouItem());
+            count--;
+        }
     }
 
     return;
@@ -106,6 +112,7 @@ const dataSlice = createSlice({
       console.log(mcqData);
       state.content.push(mcqData);
       console.log("added mcqdata to content");
+      console.log("content length is", state.content.length)
     });
   },
 })
