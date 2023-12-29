@@ -16,8 +16,9 @@ const AnswerSelection = ({ item }: { item: McqData }) => {
       <FlatList
         data={item.options}
         ItemSeparatorComponent={() => <View style={{ height: 8 }} />}
-        renderItem={({ item: option }) => (
+        renderItem={({ item: option, index }) => (
           <AnswerOption
+            index={index}
             option={option}
             isOptionPressed={item.isOptionPressed}
             isCorrectAnswer={item.correct_options.some(correctOption => correctOption.id === option.id)}

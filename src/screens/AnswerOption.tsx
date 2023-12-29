@@ -8,14 +8,14 @@ import TikTokImages from '../theme/TikTokImages';
 import TikTokColors from '../theme/TikTokColors';
 
 type ItemProps = {
+  index: number;
   option: Option;
   isOptionPressed: boolean;
   isCorrectAnswer: boolean; 
 };
 
-const AnswerOption = ({option, isOptionPressed, isCorrectAnswer}: ItemProps) => {
+const AnswerOption = ({index, option, isOptionPressed, isCorrectAnswer}: ItemProps) => {
   const currentMcq = useSelector((state: RootState) => state.data.currentMcq);
-  const index = currentMcq.options.findIndex(element => element.id === option.id);
   const wasThisOptionPressed = currentMcq.buttonTaps[index];
   const [slideAnimation] = useState(new Animated.Value(0));
 
@@ -30,7 +30,6 @@ const AnswerOption = ({option, isOptionPressed, isCorrectAnswer}: ItemProps) => 
     if(!currentMcq.isOptionPressed) {
       animateRightToLeft();
       console.log("pressed an options")
-      const index = currentMcq.options.findIndex(element => element.id === option.id);
       console.log("selected index ", index);
       console.log(currentMcq)
       store.dispatch(updateButtonPress({index: index, didPress: true}));
