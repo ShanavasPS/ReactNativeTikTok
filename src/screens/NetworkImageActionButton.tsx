@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
     borderColor: 'white', // Add white border color
     borderWidth: 1, // Add border width
     borderRadius: 23.5,
+    top: 15,
   },
   avatarImage: {
     width: 45,
@@ -50,7 +51,6 @@ const styles = StyleSheet.create({
   followImage: {
     width: 24,
     height: 24,
-    bottom: 15,
   },
 });
 
