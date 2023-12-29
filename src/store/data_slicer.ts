@@ -6,9 +6,6 @@ import {store} from './data_store';
 import {RootState} from './data_store';
 
 interface DataState {
-  value: number;
-  currentMcq: McqData;
-  answerData: AnswerData;
   content: McqData[];
   currentPageIndex: number;
 }
@@ -31,7 +28,7 @@ export const fetchPage = createAsyncThunk(
 
     // Access specific values from the current state
     const content = currentState.data.content;
-    await store.dispatch(updateCurrentPageIndex(pageIndex));
+    store.dispatch(updateCurrentPageIndex(pageIndex));
 
     if (pageIndex > content.length - 5) {
       let count = 5 - (content.length - pageIndex);
@@ -45,27 +42,6 @@ export const fetchPage = createAsyncThunk(
 );
 
 const initialState: DataState = {
-  value: 0,
-  currentMcq: {
-    type: '',
-    id: 0,
-    playlist: '',
-    description: '',
-    image: '',
-    question: '',
-    options: [],
-    correct_options: [],
-    user: {
-      name: '',
-      avatar: '',
-    },
-    isOptionPressed: false,
-    buttonTaps: [],
-  },
-  answerData: {
-    id: 0,
-    correct_options: [],
-  },
   content: [],
   currentPageIndex: -1,
 };
@@ -76,16 +52,11 @@ const dataSlice = createSlice({
   reducers: {
     updateCurrentPageIndex: (state, action) => {
       state.currentPageIndex = action.payload;
-      if (state.currentPageIndex < state.content.length) {
-        state.currentMcq = state.content[state.currentPageIndex];
-      }
     },
     updateButtonPress: (state, action) => {
       const {index, didPress} = action.payload;
       state.content[state.currentPageIndex].isOptionPressed = didPress;
       state.content[state.currentPageIndex].buttonTaps[index] = didPress;
-      state.currentMcq.isOptionPressed = didPress;
-      state.currentMcq.buttonTaps[index] = didPress;
     },
   },
   extraReducers: builder => {
