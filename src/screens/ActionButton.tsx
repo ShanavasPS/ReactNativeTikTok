@@ -2,8 +2,14 @@ import React from 'react';
 import { View, Image, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import TikTokColors from '../theme/TikTokColors';
 
+type ItemProps = {
+  image: any,
+  height: number,
+  width: number,
+  text: string
+};
 
-const ActionButton = (image: any, height: number, width: number, text: string) => {
+const ActionButton = ({image, height, width, text}: ItemProps) => {
   const showLabel = text.length > 0;
   return (
     <TouchableOpacity

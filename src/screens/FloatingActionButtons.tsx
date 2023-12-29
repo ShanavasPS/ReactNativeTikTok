@@ -10,10 +10,10 @@ const FloatingActionButtons = () => {
     <View style={styles.container}>
       <View>
         <NetworkImageActionButton />
-        {ActionButton(TikTokImages.like, 26, 28, TikTokStrings.likeCount)}
-        {ActionButton(TikTokImages.comments, 26, 27, TikTokStrings.commentsCount)}
-        {ActionButton(TikTokImages.bookmark, 28, 27, TikTokStrings.shareCount)}
-        {ActionButton(TikTokImages.share, 24, 22, TikTokStrings.bookmarkCount)}
+        <ActionButton image={TikTokImages.like} height={26} width={28} text={TikTokStrings.likeCount}/>
+        <ActionButton image={TikTokImages.comments} height={26} width={27} text={TikTokStrings.commentsCount}/>
+        <ActionButton image={TikTokImages.bookmark} height={28} width={27} text={TikTokStrings.shareCount}/>
+        <ActionButton image={TikTokImages.share} height={24} width={22} text={TikTokStrings.bookmarkCount}/>
       </View>
     </View>
   );
