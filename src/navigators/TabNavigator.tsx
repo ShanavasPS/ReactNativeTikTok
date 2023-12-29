@@ -1,3 +1,4 @@
+import React from 'react';
 import {Image} from 'react-native';
 import Activity from '../screens/Activity';
 import Bookmarks from '../screens/Bookmarks';
@@ -6,8 +7,38 @@ import Home from '../screens/Home';
 import Profile from '../screens/Profile';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import TikTokImages from '../theme/TikTokImages';
+import {RouteProp, ParamListBase} from '@react-navigation/native';
 
 const Tab = createBottomTabNavigator();
+
+type TabBarIconProps = {
+  route: RouteProp<ParamListBase, string>;
+  color: string;
+  size: number;
+};
+
+const getTabBarIcon = ({route, size, color}: TabBarIconProps) => {
+  let iconSource;
+
+  if (route.name === 'Home') {
+    iconSource = TikTokImages.home;
+  } else if (route.name === 'Discover') {
+    iconSource = TikTokImages.discover;
+  } else if (route.name === 'Activity') {
+    iconSource = TikTokImages.activity;
+  } else if (route.name === 'Bookmarks') {
+    iconSource = TikTokImages.bookmarks;
+  } else if (route.name === 'Profile') {
+    iconSource = TikTokImages.profile;
+  }
+
+  return (
+    <Image
+      source={iconSource}
+      style={{tintColor: color, width: size, height: size}}
+    />
+  );
+};
 
 const TabNavigator = () => {
   return (
@@ -21,27 +52,7 @@ const TabNavigator = () => {
           fontFamily: 'SF Pro Rounded',
           fontWeight: '500',
         },
-        tabBarIcon: ({color, size}) => {
-          let iconSource;
-
-          if (route.name === 'Home') {
-            iconSource = TikTokImages.home;
-          } else if (route.name === 'Discover') {
-            iconSource = TikTokImages.discover;
-          } else if (route.name === 'Activity') {
-            iconSource = TikTokImages.activity;
-          } else if (route.name === 'Bookmarks') {
-            iconSource = TikTokImages.bookmarks;
-          } else if (route.name === 'Profile') {
-            iconSource = TikTokImages.profile;
-          }
-          return (
-            <Image
-              source={iconSource}
-              style={{tintColor: color, width: size, height: size}}
-            />
-          );
-        },
+        tabBarIcon: ({color, size}) => getTabBarIcon({route, size, color}),
       })}>
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen

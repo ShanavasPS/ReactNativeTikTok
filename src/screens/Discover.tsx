@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {Text, View} from 'react-native';
 
 const Discover = () => {
   return (
@@ -8,7 +8,5 @@ const Discover = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({});
 
 export default Discover;

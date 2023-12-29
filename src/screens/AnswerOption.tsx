@@ -7,7 +7,7 @@ import {
   View,
   LayoutChangeEvent,
 } from 'react-native';
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useCallback, useContext, useEffect, useState} from 'react';
 import {store} from '../store/data_store';
 import {updateButtonPress} from '../store/data_slicer';
 import TikTokImages from '../theme/TikTokImages';
@@ -32,22 +32,18 @@ const AnswerOption = () => {
     }
   };
 
-  useEffect(() => {
-    animateRightToLeft();
-  }, [isOptionPressed]);
-
-  const onPress = () => {
-    if (!isOptionPressed) {
-      store.dispatch(updateButtonPress({index: index, didPress: true}));
-    }
-  };
-
-  const animateRightToLeft = () => {
+  const animateRightToLeft = useCallback(() => {
     Animated.timing(slideAnimation, {
       toValue: 0,
       duration: 1000,
       useNativeDriver: false,
     }).start();
+  }, [slideAnimation]);
+
+  const onPress = () => {
+    if (!isOptionPressed) {
+      store.dispatch(updateButtonPress({index: index, didPress: true}));
+    }
   };
 
   const getBackgroundColor = () => {
@@ -72,11 +68,15 @@ const AnswerOption = () => {
       : {};
   };
 
+  useEffect(() => {
+    animateRightToLeft();
+  }, [isOptionPressed, animateRightToLeft]);
+
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={onPress} style={styles.touchableOpacity}>
         <View
-          style={{flexDirection: 'row', alignItems: 'center'}}
+          style={styles.animatedViewContainer}
           onLayout={onInnerContainerLayout}>
           <Animated.View
             style={[
@@ -123,11 +123,14 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
     flexDirection: 'row',
-
     backgroundColor: TikTokColors.optionBackground,
   },
   touchableOpacity: {
     flex: 1,
+  },
+  animatedViewContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   innerContainer: {
     position: 'absolute',

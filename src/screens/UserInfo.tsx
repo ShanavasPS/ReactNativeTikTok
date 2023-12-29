@@ -11,7 +11,7 @@ const UserInfo = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.apUsHistoryContainer}>{item.user.name}</Text>
-      <View style={{flexDirection: 'row'}}>
+      <View style={styles.innerContainer}>
         <Text style={styles.description}>{normalText}</Text>
         {matches &&
           matches.map((match, index) => (
@@ -28,6 +28,9 @@ const styles = StyleSheet.create({
   container: {
     paddingTop: 24,
     alignItems: 'flex-start',
+  },
+  innerContainer: {
+    flexDirection: 'row',
   },
   username: {
     color: TikTokColors.statusBar,

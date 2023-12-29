@@ -1,8 +1,6 @@
-import React, {useEffect, useContext, useState} from 'react';
+import React, {useEffect} from 'react';
 import {
   StyleSheet,
-  TouchableOpacity,
-  Image,
   Text,
   View,
   ImageBackground,
@@ -42,7 +40,7 @@ const Home = () => {
   };
 
   return (
-    <SafeAreaView style={{flex: 1}}>
+    <SafeAreaView style={styles.safeArea}>
       <PagerView
         style={styles.pagerView}
         initialPage={0}
@@ -81,6 +79,9 @@ const Home = () => {
 };
 
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+  },
   container: {
     flex: 1,
     flexDirection: 'row',
