@@ -17,7 +17,7 @@ const AnswerOption = ({option, isOptionPressed, isCorrectAnswer}: ItemProps) => 
   const currentMcq = useSelector((state: RootState) => state.data.currentMcq);
   const index = currentMcq.options.findIndex(element => element.id === option.id);
   const wasThisOptionPressed = currentMcq.buttonTaps[index];
-  const [slideAnimation] = useState(new Animated.Value(400)); // Initial position outside the screen
+  const [slideAnimation] = useState(new Animated.Value(320)); // Initial position outside the screen
 
   const onPress = () => {
     if(!currentMcq.isOptionPressed) {
@@ -34,7 +34,7 @@ const AnswerOption = ({option, isOptionPressed, isCorrectAnswer}: ItemProps) => 
   const animateRightToLeft = () => {
     Animated.timing(slideAnimation, {
       toValue: 0,
-      duration: 1000,
+      duration: 500,
       useNativeDriver: false,
     }).start();
   };
@@ -78,13 +78,25 @@ const AnswerOption = ({option, isOptionPressed, isCorrectAnswer}: ItemProps) => 
           />
           <Text style={styles.optionText}>{option.answer}</Text>
           {(isOptionPressed && wasThisOptionPressed) && (
-            <Image
+            <Animated.View
               style={[
                 styles.iconImage,
-                getIconImageStyle(),
+                {
+                  transform: [
+                    {
+                      translateX: slideAnimation,
+                    },
+                  ],
+                },
               ]}
-              source={getImageSource()}
-            />
+            >
+              <Image
+                style={[styles.iconImage,
+                  getIconImageStyle(),
+                ]}
+                source={getImageSource()}
+              />
+            </Animated.View>
           )}
         </View>
       </TouchableOpacity>
@@ -130,6 +142,7 @@ const styles = StyleSheet.create({
   iconImage: {
     width: 56,
     height: 56,
+    alignSelf: "center"
   },
 });
 
