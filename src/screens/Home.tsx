@@ -17,6 +17,7 @@ import TopBar from './TopBar';
 import FloatingActionButtons from './FloatingActionButtons';
 import {incrementElapsedTime} from '../store/timer_slicer';
 import {DataContext} from '../contexts/data_context';
+import TikTokStrings from '../theme/TikTokStrings';
 
 const Home = () => {
   const content = useSelector((state: RootState) => state.data.content);
@@ -45,7 +46,7 @@ const Home = () => {
         // Show loading screen
         <View style={styles.loadingContainer}>
           <View style={styles.loadingContent}>
-            <Text style={styles.loadingText}>Loading...</Text>
+            <Text style={styles.loadingText}>{TikTokStrings.loading}</Text>
           </View>
         </View>
       ) : (
@@ -119,7 +120,7 @@ const styles = StyleSheet.create({
   questionContainer: {
     flex: 1,
     height: '50%',
-    justifyContent: 'flex-start', // Center the content vertically
+    justifyContent: 'flex-start',
     paddingTop: 40,
     paddingBottom: 40,
   },
@@ -134,7 +135,7 @@ const styles = StyleSheet.create({
   },
   roundedBackground: {
     backgroundColor: 'rgba(0, 0, 0, 0.6)',
-    borderRadius: 10, // Adjust this value for the desired border radius
+    borderRadius: 10,
     padding: 20,
     overflow: 'hidden',
   },
@@ -147,7 +148,7 @@ const styles = StyleSheet.create({
   },
   backgroundImage: {
     flex: 1,
-    resizeMode: 'cover', // or 'stretch' depending on your needs
+    resizeMode: 'cover',
     justifyContent: 'center',
   },
   userInfo: {

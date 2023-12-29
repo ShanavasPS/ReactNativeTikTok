@@ -21,6 +21,7 @@ class TikTokStrings {
   static readonly secondPostFix = 's';
   static readonly minutePostFix = 'm';
   static readonly hourPostFix = 'h';
+  static readonly loading = 'Loading...';
   static readonly ellipsesImagePath = '../assets/ellipse21.png';
   static readonly followImagePath = '../assets/follow.png';
   static readonly likeImagePath = '../assets/like.png';
