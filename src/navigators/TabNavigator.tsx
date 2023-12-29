@@ -15,9 +15,8 @@ const TabNavigator = () => {
         screenOptions={({ route }) => ({
         headerShown: false,
         tabBarStyle: { backgroundColor: 'black' }, // Set the background color of the tab bar
-        tabBarActiveTintColor: 'white', // Set the active tab text color
+        tabBarActiveTintColor: 'white',
         tabBarLabelStyle: {
-          color: 'white',
           fontSize: 10,
           fontFamily: 'SF Pro Rounded',
           fontWeight: '500',
@@ -36,7 +35,6 @@ const TabNavigator = () => {
           } else if (route.name === 'Profile') {
             iconSource = TikTokImages.profile;
           }
-
           return <Image source={iconSource} style={{ tintColor: color, width: size, height: size }} />;
         },
         })}
@@ -44,11 +42,47 @@ const TabNavigator = () => {
           <Tab.Screen 
             name="Home" 
             component={Home}
-            ></Tab.Screen>
-          <Tab.Screen name="Discover" component={Discover}></Tab.Screen>
-          <Tab.Screen name="Activity" component={Activity}></Tab.Screen>
-          <Tab.Screen name="Bookmarks" component={Bookmarks}></Tab.Screen>
-          <Tab.Screen name="Profile" component={Profile}></Tab.Screen>
+          />
+          <Tab.Screen 
+            name="Discover" 
+            component={Discover}
+            listeners={{
+              tabPress: e => {
+                // Prevent default action
+                e.preventDefault();
+              },
+            }}
+          />
+          <Tab.Screen 
+            name="Activity" 
+            component={Activity}
+            listeners={{
+              tabPress: e => {
+                // Prevent default action
+                e.preventDefault();
+              },
+            }}
+          />
+          <Tab.Screen 
+            name="Bookmarks"
+            component={Bookmarks}
+            listeners={{
+              tabPress: e => {
+                // Prevent default action
+                e.preventDefault();
+              },
+            }}
+          />
+          <Tab.Screen
+            name="Profile"
+            component={Profile}
+            listeners={{
+              tabPress: e => {
+                // Prevent default action
+                e.preventDefault();
+              },
+            }}
+          />
       </Tab.Navigator>
     )
   }
