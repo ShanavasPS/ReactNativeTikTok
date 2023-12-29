@@ -21,7 +21,9 @@ const AnswerOption = ({option, isOptionPressed, isCorrectAnswer}: ItemProps) => 
 
   const onInnerContainerLayout = (event: LayoutChangeEvent) => {
     const { width } = event.nativeEvent.layout;
-    slideAnimation.setValue(width);
+    if(!currentMcq.isOptionPressed) {
+      slideAnimation.setValue(width);
+    }
   };
 
   const onPress = () => {
