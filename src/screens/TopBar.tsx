@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Text, Image, StyleSheet, StatusBar } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, Image, StyleSheet, StatusBar, LayoutChangeEvent } from 'react-native';
 import TikTokColors from '../theme/TikTokColors';
 import TikTokStrings from '../theme/TikTokStrings';
 import { useSelector } from 'react-redux';
@@ -8,7 +8,13 @@ import { getDuration } from '../utils/utils';
 import TikTokImages from '../theme/TikTokImages';
 
 const TopBar = () => {
+    const [textWidth, setTextWidth] = useState(0);
     const elapsedTime = useSelector((state: RootState) => state.time.elapsedTime);
+
+    const handleTextLayout = (event: LayoutChangeEvent) => {
+      const { width } = event.nativeEvent.layout;
+      setTextWidth(width);
+    };
 
     return (
       <View style={styles.container}>
@@ -17,8 +23,8 @@ const TopBar = () => {
           <Text style={styles.timeText}>{getDuration(elapsedTime)}</Text>
         </View>
   
-        <View style={styles.forYouContainer}>
-          <Text style={styles.forYouTextStyle}>{TikTokStrings.forYou}</Text>
+        <View style={[styles.forYouContainer, {paddingRight: textWidth/2}]}>
+          <Text style={styles.forYouTextStyle} onLayout={handleTextLayout}>{TikTokStrings.forYou}</Text>
           <View style={styles.highlighterBar} />
         </View>
   
@@ -53,7 +59,6 @@ const TopBar = () => {
       flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center',
-      paddingRight: 30,
     },
     forYouTextStyle: {
       fontSize: 17,
