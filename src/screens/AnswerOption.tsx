@@ -1,4 +1,4 @@
-import { Image, Animated , StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Image, Animated , StyleSheet, Text, TouchableOpacity, View, LayoutChangeEvent } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { RootState, store } from '../store/data_store';
 import { updateButtonPress } from '../store/data_slicer';
@@ -17,7 +17,12 @@ const AnswerOption = ({option, isOptionPressed, isCorrectAnswer}: ItemProps) => 
   const currentMcq = useSelector((state: RootState) => state.data.currentMcq);
   const index = currentMcq.options.findIndex(element => element.id === option.id);
   const wasThisOptionPressed = currentMcq.buttonTaps[index];
-  const [slideAnimation] = useState(new Animated.Value(320)); // Initial position outside the screen
+  const [slideAnimation] = useState(new Animated.Value(0));
+
+  const onInnerContainerLayout = (event: LayoutChangeEvent) => {
+    const { width } = event.nativeEvent.layout;
+    slideAnimation.setValue(width);
+  };
 
   const onPress = () => {
     if(!currentMcq.isOptionPressed) {
@@ -62,7 +67,7 @@ const AnswerOption = ({option, isOptionPressed, isCorrectAnswer}: ItemProps) => 
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={onPress} style={styles.touchableOpacity}>
-        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }} onLayout={onInnerContainerLayout}>
           <Animated.View
             style={[
               styles.innerContainer,
