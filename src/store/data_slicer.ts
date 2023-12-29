@@ -28,7 +28,6 @@ export const fetchPage = createAsyncThunk(
     // Access current store state using getState()
     const currentState = getState() as RootState;
 
-    if(currentState.data.currentPageIndex != pageIndex) {
         // Access specific values from the current state
         const content = currentState.data.content;
         await store.dispatch(updateCurrentPageIndex(pageIndex));
@@ -42,7 +41,6 @@ export const fetchPage = createAsyncThunk(
                 count--;
             }
         }
-    }
     return;
   }
 );

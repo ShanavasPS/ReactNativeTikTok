@@ -10,6 +10,7 @@ import Playlist from './Playlist';
 import TopBar from './TopBar';
 import FloatingActionButtons from './FloatingActionButtons';
 import { incrementElapsedTime } from '../store/timer_slicer';
+import { OptionContext } from '../contexts/option_context';
 
 const Home = () => {
   const content = useSelector((state: RootState) => state.data.content);
@@ -48,6 +49,7 @@ const Home = () => {
             source={{ uri: item.image }}
             style={styles.backgroundImage}
           >
+            <OptionContext.Provider value={item}>
             <TopBar />
             <View style={styles.container}>
               <View style={styles.pageContainer}>
@@ -58,7 +60,7 @@ const Home = () => {
                     </Text>
                   </Text>
                 </Text>
-                <AnswerSelection item={item}></AnswerSelection>
+                <AnswerSelection/>
                 <View style={styles.userInfo}>
                   <UserInfo></UserInfo>
                 </View>
@@ -68,6 +70,7 @@ const Home = () => {
               </View>
             </View>
             <Playlist></Playlist>
+            </OptionContext.Provider>
           </ImageBackground>
         ))}
       </PagerView>

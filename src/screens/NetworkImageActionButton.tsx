@@ -1,11 +1,10 @@
-import React from 'react';
-import { View, Image, TouchableOpacity, ActivityIndicator, StyleSheet } from 'react-native';
-import { useSelector } from 'react-redux'; // Assuming you're using Redux for state management
-import { RootState } from '../store/data_store';
+import React, { useContext } from 'react';
+import { View, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import TikTokImages from '../theme/TikTokImages';
+import { OptionContext } from '../contexts/option_context';
 
 const NetworkImageActionButton = () => {
-  const currentMcq = useSelector((state: RootState) => state.data.currentMcq);
+  const currentMcq = useContext(OptionContext);  
 
   return (
     <TouchableOpacity

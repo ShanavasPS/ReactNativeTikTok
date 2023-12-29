@@ -4,12 +4,10 @@ import TikTokColors from '../theme/TikTokColors';
 
 type ItemProps = {
   image: any,
-  height: number,
-  width: number,
   text: string
 };
 
-const ActionButton = ({image, height, width, text}: ItemProps) => {
+const ActionButton = ({image, text}: ItemProps) => {
   const showLabel = text.length > 0;
   return (
     <TouchableOpacity

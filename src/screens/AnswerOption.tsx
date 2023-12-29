@@ -1,21 +1,18 @@
 import { Image, Animated , StyleSheet, Text, TouchableOpacity, View, LayoutChangeEvent } from 'react-native'
-import React, { useEffect, useState } from 'react'
-import { RootState, store } from '../store/data_store';
+import React, { useContext, useEffect, useState } from 'react'
+import { store } from '../store/data_store';
 import { updateButtonPress } from '../store/data_slicer';
-import { useSelector } from 'react-redux';
-import { Option } from '../model/options_model';
 import TikTokImages from '../theme/TikTokImages';
 import TikTokColors from '../theme/TikTokColors';
+import { OptionContext, SelectedOptionContext } from '../contexts/option_context';
 
-type ItemProps = {
-  index: number;
-  option: Option;
-  isOptionPressed: boolean;
-  isCorrectAnswer: boolean;
-  wasThisOptionPressed: boolean;
-};
+const AnswerOption = () => {
+  const item = useContext(OptionContext);
+  const { index, option } = useContext(SelectedOptionContext);
+  const isOptionPressed = item.isOptionPressed
+  const isCorrectAnswer= item.correct_options.some(correctOption => correctOption.id === option.id)
+  const wasThisOptionPressed= item.buttonTaps[index]
 
-const AnswerOption = ({index, option, isOptionPressed, isCorrectAnswer, wasThisOptionPressed}: ItemProps) => {
   const [slideAnimation] = useState(new Animated.Value(0));
 
   const onInnerContainerLayout = (event: LayoutChangeEvent) => {

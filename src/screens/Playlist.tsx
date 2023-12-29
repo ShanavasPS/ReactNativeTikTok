@@ -1,14 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 import TikTokColors from '../theme/TikTokColors';
-import { useSelector } from 'react-redux';
-import { RootState } from '../store/data_store';
 import TikTokStrings from '../theme/TikTokStrings';
 import TikTokImages from '../theme/TikTokImages';
+import { OptionContext } from '../contexts/option_context';
 
 const Playlist = () => {
-  const currentMcq = useSelector((state: RootState) => state.data.currentMcq);
-  
+  const currentMcq = useContext(OptionContext);  
   return (
     <View style={[styles.container, { backgroundColor: TikTokColors.playlistBackgroundColor }]}>
       <View style={styles.contentContainer}>

@@ -1,29 +1,23 @@
-import React, { useEffect } from 'react';
+import React, { useContext } from 'react';
 import {
-  SafeAreaView,
   FlatList,
   StyleSheet,
-  StatusBar,
   View,
 } from 'react-native';
 import AnswerOption from './AnswerOption';
-import { store } from '../store/data_store';
-import { McqData } from '../model/options_model';
+import { OptionContext, SelectedOptionContext } from '../contexts/option_context';
 
-const AnswerSelection = ({ item }: { item: McqData }) => {
+const AnswerSelection = () => {
+  const item = useContext(OptionContext);
   return (
     <View style={styles.container}>
       <FlatList
         data={item.options}
         ItemSeparatorComponent={() => <View style={{ height: 8 }} />}
         renderItem={({ item: option, index }) => (
-          <AnswerOption
-            index={index}
-            option={option}
-            isOptionPressed={item.isOptionPressed}
-            isCorrectAnswer={item.correct_options.some(correctOption => correctOption.id === option.id)}
-            wasThisOptionPressed={item.buttonTaps[index]}
-          />
+          <SelectedOptionContext.Provider value={{index, option}}>
+            <AnswerOption/>
+          </SelectedOptionContext.Provider>          
         )}
         keyExtractor={(option) => option.id}
       />

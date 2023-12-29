@@ -1,16 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import TikTokColors from '../theme/TikTokColors';
-import { useSelector } from 'react-redux';
-import { RootState } from '../store/data_store';
+import { OptionContext } from '../contexts/option_context';
 
 const UserInfo = () => {
-  const currentMcq = useSelector((state: RootState) => state.data.currentMcq);
+  const item = useContext(OptionContext);
+  const normalText = item.description.split(/#[^ ]+/);
+  const matches = item.description.match(/#[^ ]+/g);
 
   return (
     <View style={styles.container}>
-        <Text style={styles.apUsHistoryContainer}>{currentMcq.user.name}</Text>
-        <Text style={styles.additionalContainer}>{currentMcq.description}</Text>
+        <Text style={styles.apUsHistoryContainer}>{item.user.name}</Text>
+        <View style={{flexDirection: 'row'}}>
+          <Text style={styles.description}>{normalText}</Text>
+          {matches && matches.map((match, index) => (
+            <Text key={index} style={styles.descriptionBold}>{match}</Text>
+          ))}
+        </View>
     </View>
   );
 };
@@ -33,17 +39,19 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     flexWrap: 'wrap',
   },
-  additionalContainer: {
+  description: {
     color: 'white',
     fontSize: 13,
     fontFamily: 'SF Pro Rounded',
     fontWeight: '400',
     flexWrap: 'wrap',
   },
-  description: {
-    color: TikTokColors.statusBar,
-    fontSize: 14,
-    fontWeight: '400',
+  descriptionBold: {
+    color: 'white',
+    fontSize: 13,
+    fontFamily: 'SF Pro Rounded',
+    fontWeight: 'bold',
+    flexWrap: 'wrap',
   },
 });
 
