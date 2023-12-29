@@ -18,20 +18,16 @@ const AnswerOption = () => {
   const onInnerContainerLayout = (event: LayoutChangeEvent) => {
     const { width } = event.nativeEvent.layout;
     if(!isOptionPressed) {
-      console.log("setting width to ", width, " for index ", index)
       slideAnimation.setValue(width);
     }
   };
 
   useEffect(() => {
-    console.log("Inside useeffect")
     animateRightToLeft();
   }, [isOptionPressed]);
 
   const onPress = () => {
     if(!isOptionPressed) {
-      console.log("pressed an options")
-      console.log("selected index ", index);
       store.dispatch(updateButtonPress({index: index, didPress: true}));
     }
   };
@@ -42,19 +38,14 @@ const AnswerOption = () => {
       duration: 1000,
       useNativeDriver: false,
     }).start();
-    console.log("animation run for index", index)
   };
 
   const getBackgroundColor = () => {
-    console.log("question is ", item.question);
-    console.log("index is ", index);
     if (isOptionPressed) {
-      console.log("if case isOptionPressed is ", isOptionPressed);
       return isCorrectAnswer ?
         TikTokColors.correctAnswerBackground : wasThisOptionPressed ?
           TikTokColors.wrongAnswerBackground : TikTokColors.transparentBackground;
     } else {
-      console.log("else case isOptionPressed is ", isOptionPressed);
       return TikTokColors.transparentBackground;
     }
   };

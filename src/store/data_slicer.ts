@@ -15,7 +15,6 @@ interface DataState {
 
 // Define an async thunk to fetch the data
 export const fetchNextForYouItem = createAsyncThunk('data/fetchNextForYouItem', async () => {
-  console.log("calling the fetchNextForYouItem")
   const mcqData = await getNextForYouItem();
   const answerData = await revealAnswer(mcqData.id);
   return { mcqData, answerData };
@@ -24,7 +23,6 @@ export const fetchNextForYouItem = createAsyncThunk('data/fetchNextForYouItem', 
 export const fetchPage = createAsyncThunk(
   'data/fetchPage',
   async (pageIndex: number, { getState }) => {
-    console.log("createasync was called");
     // Access current store state using getState()
     const currentState = getState() as RootState;
 
@@ -34,9 +32,7 @@ export const fetchPage = createAsyncThunk(
 
         if(pageIndex > content.length - 5) {
             let count = 5 - (content.length - pageIndex)
-            console.log("count is ", count)
             while(count > 0) {
-                console.log("number of elements is less")
                 await store.dispatch(fetchNextForYouItem());
                 count--;
             }
@@ -78,20 +74,12 @@ const dataSlice = createSlice({
   reducers: {
     updateCurrentPageIndex: (state, action) => {
       state.currentPageIndex = action.payload;
-      console.log("inside updatecurrentpageindex");
-      console.log(state.currentPageIndex);
       if(state.currentPageIndex < state.content.length) {
         state.currentMcq = state.content[state.currentPageIndex];
-        console.log("setting currentmcq from content");
-        console.log(state.currentMcq);
       }
     },
     updateButtonPress: (state, action) => {
-      console.log("update button press")
       const { index, didPress } = action.payload;
-      console.log("index is ", index);
-      console.log("didPress is ", didPress);
-      console.log(state.currentPageIndex)
       state.content[state.currentPageIndex].isOptionPressed = didPress;
       state.content[state.currentPageIndex].buttonTaps[index] = didPress;
       state.currentMcq.isOptionPressed = didPress;
@@ -100,18 +88,12 @@ const dataSlice = createSlice({
   },
   extraReducers: builder => {
     builder.addCase(fetchNextForYouItem.fulfilled, (state, action) => {
-      console.log("received payload inside the reducer")
       const mcqData: McqData = action.payload.mcqData;
       mcqData.isOptionPressed = false;
       mcqData.buttonTaps = Array.from({ length: mcqData.options.length }, () => false);
       const answerData: AnswerData = action.payload.answerData;
       mcqData.correct_options = answerData.correct_options;
-      console.log("adding this mcqdata to content");
-      console.log(mcqData.isOptionPressed)
-      console.log(mcqData);
       state.content.push(mcqData);
-      console.log("added mcqdata to content");
-      console.log("content length is", state.content.length)
     });
   },
 })

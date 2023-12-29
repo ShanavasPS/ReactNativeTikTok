@@ -16,7 +16,6 @@ const Home = () => {
   const content = useSelector((state: RootState) => state.data.content);
 
   useEffect(() => {
-    console.log("Inside useeffect")
     store.dispatch(fetchNextForYouItem());
 
     const timerId = setInterval(() => {
@@ -31,7 +30,6 @@ const Home = () => {
 
   const handlePageSelected = (e: PagerViewOnPageSelectedEvent) => {
     const { position } = e.nativeEvent;
-    console.log('Current Card Index', position);
     store.dispatch(fetchPage(position));
   };
 
