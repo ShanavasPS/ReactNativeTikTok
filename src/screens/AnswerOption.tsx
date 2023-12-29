@@ -1,23 +1,33 @@
-import { Image, Animated , StyleSheet, Text, TouchableOpacity, View, LayoutChangeEvent } from 'react-native'
-import React, { useContext, useEffect, useState } from 'react'
-import { store } from '../store/data_store';
-import { updateButtonPress } from '../store/data_slicer';
+import {
+  Image,
+  Animated,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  LayoutChangeEvent,
+} from 'react-native';
+import React, {useContext, useEffect, useState} from 'react';
+import {store} from '../store/data_store';
+import {updateButtonPress} from '../store/data_slicer';
 import TikTokImages from '../theme/TikTokImages';
 import TikTokColors from '../theme/TikTokColors';
-import { DataContext, OptionContext } from '../contexts/data_context';
+import {DataContext, OptionContext} from '../contexts/data_context';
 
 const AnswerOption = () => {
   const item = useContext(DataContext);
-  const { index, option } = useContext(OptionContext);
-  const isOptionPressed = item.isOptionPressed
-  const isCorrectAnswer= item.correct_options.some(correctOption => correctOption.id === option.id)
-  const wasThisOptionPressed= item.buttonTaps[index]
+  const {index, option} = useContext(OptionContext);
+  const isOptionPressed = item.isOptionPressed;
+  const isCorrectAnswer = item.correct_options.some(
+    correctOption => correctOption.id === option.id,
+  );
+  const wasThisOptionPressed = item.buttonTaps[index];
 
   const [slideAnimation] = useState(new Animated.Value(0));
 
   const onInnerContainerLayout = (event: LayoutChangeEvent) => {
-    const { width } = event.nativeEvent.layout;
-    if(!isOptionPressed) {
+    const {width} = event.nativeEvent.layout;
+    if (!isOptionPressed) {
       slideAnimation.setValue(width);
     }
   };
@@ -27,7 +37,7 @@ const AnswerOption = () => {
   }, [isOptionPressed]);
 
   const onPress = () => {
-    if(!isOptionPressed) {
+    if (!isOptionPressed) {
       store.dispatch(updateButtonPress({index: index, didPress: true}));
     }
   };
@@ -42,35 +52,39 @@ const AnswerOption = () => {
 
   const getBackgroundColor = () => {
     if (isOptionPressed) {
-      return isCorrectAnswer ?
-        TikTokColors.correctAnswerBackground : wasThisOptionPressed ?
-          TikTokColors.wrongAnswerBackground : TikTokColors.transparentBackground;
+      return isCorrectAnswer
+        ? TikTokColors.correctAnswerBackground
+        : wasThisOptionPressed
+        ? TikTokColors.wrongAnswerBackground
+        : TikTokColors.transparentBackground;
     } else {
       return TikTokColors.transparentBackground;
     }
   };
 
   const getImageSource = () => {
-    return isCorrectAnswer
-      ? TikTokImages.correct
-      : TikTokImages.wrong
+    return isCorrectAnswer ? TikTokImages.correct : TikTokImages.wrong;
   };
 
   const getIconImageStyle = () => {
-    return isOptionPressed && !isCorrectAnswer ? { transform: [{ rotate: '180deg' }] } : {};
+    return isOptionPressed && !isCorrectAnswer
+      ? {transform: [{rotate: '180deg'}]}
+      : {};
   };
 
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={onPress} style={styles.touchableOpacity}>
-        <View style={{ flexDirection: 'row', alignItems: 'center' }} onLayout={onInnerContainerLayout}>
+        <View
+          style={{flexDirection: 'row', alignItems: 'center'}}
+          onLayout={onInnerContainerLayout}>
           <Animated.View
             style={[
               styles.innerContainer,
               {
                 transform: [
                   {
-                    translateX: slideAnimation
+                    translateX: slideAnimation,
                   },
                 ],
                 backgroundColor: getBackgroundColor(),
@@ -78,7 +92,7 @@ const AnswerOption = () => {
             ]}
           />
           <Text style={styles.optionText}>{option.answer}</Text>
-          {(isOptionPressed && wasThisOptionPressed) && (
+          {isOptionPressed && wasThisOptionPressed && (
             <Animated.View
               style={[
                 styles.iconImage,
@@ -89,12 +103,9 @@ const AnswerOption = () => {
                     },
                   ],
                 },
-              ]}
-            >
+              ]}>
               <Image
-                style={[styles.iconImage,
-                  getIconImageStyle(),
-                ]}
+                style={[styles.iconImage, getIconImageStyle()]}
                 source={getImageSource()}
               />
             </Animated.View>
@@ -113,7 +124,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
 
-    backgroundColor: TikTokColors.optionBackground
+    backgroundColor: TikTokColors.optionBackground,
   },
   touchableOpacity: {
     flex: 1,
@@ -134,7 +145,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexWrap: 'wrap',
     textShadowColor: 'rgba(0, 0, 0, 1)',
-    textShadowOffset: { width: 1, height: 1.5 },
+    textShadowOffset: {width: 1, height: 1.5},
     textShadowRadius: 2,
     zIndex: 2,
     paddingHorizontal: 12,
@@ -143,8 +154,8 @@ const styles = StyleSheet.create({
   iconImage: {
     width: 56,
     height: 56,
-    alignSelf: "center"
+    alignSelf: 'center',
   },
 });
 
-export default AnswerOption
+export default AnswerOption;

@@ -1,16 +1,24 @@
 import React, {useEffect, useContext, useState} from 'react';
-import { StyleSheet, TouchableOpacity, Image, Text, View, ImageBackground, SafeAreaView } from 'react-native'
-import PagerView, { PagerViewOnPageSelectedEvent } from 'react-native-pager-view';
+import {
+  StyleSheet,
+  TouchableOpacity,
+  Image,
+  Text,
+  View,
+  ImageBackground,
+  SafeAreaView,
+} from 'react-native';
+import PagerView, {PagerViewOnPageSelectedEvent} from 'react-native-pager-view';
 import AnswerSelection from './AnswerSelection';
 import UserInfo from './UserInfo';
-import { RootState, store } from '../store/data_store';
-import { fetchNextForYouItem, fetchPage } from '../store/data_slicer';
-import { useSelector } from 'react-redux';
+import {RootState, store} from '../store/data_store';
+import {fetchNextForYouItem, fetchPage} from '../store/data_slicer';
+import {useSelector} from 'react-redux';
 import Playlist from './Playlist';
 import TopBar from './TopBar';
 import FloatingActionButtons from './FloatingActionButtons';
-import { incrementElapsedTime } from '../store/timer_slicer';
-import { DataContext } from '../contexts/data_context';
+import {incrementElapsedTime} from '../store/timer_slicer';
+import {DataContext} from '../contexts/data_context';
 
 const Home = () => {
   const content = useSelector((state: RootState) => state.data.content);
@@ -29,52 +37,48 @@ const Home = () => {
   }, []);
 
   const handlePageSelected = (e: PagerViewOnPageSelectedEvent) => {
-    const { position } = e.nativeEvent;
+    const {position} = e.nativeEvent;
     store.dispatch(fetchPage(position));
   };
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{flex: 1}}>
       <PagerView
         style={styles.pagerView}
         initialPage={0}
         orientation={'vertical'}
-        onPageSelected={handlePageSelected}
-      >
+        onPageSelected={handlePageSelected}>
         {content.map((item, index) => (
           <ImageBackground
             key={index.toString()}
-            source={{ uri: item.image }}
-            style={styles.backgroundImage}
-          >
+            source={{uri: item.image}}
+            style={styles.backgroundImage}>
             <DataContext.Provider value={item}>
-            <TopBar />
-            <View style={styles.container}>
-              <View style={styles.pageContainer}>
-                <Text style={styles.questionContainer}>
-                  <Text style={styles.roundedBackground}>
-                    <Text style={styles.questionText}>
-                      {item.question}
+              <TopBar />
+              <View style={styles.container}>
+                <View style={styles.pageContainer}>
+                  <Text style={styles.questionContainer}>
+                    <Text style={styles.roundedBackground}>
+                      <Text style={styles.questionText}>{item.question}</Text>
                     </Text>
                   </Text>
-                </Text>
-                <AnswerSelection/>
-                <View style={styles.userInfo}>
-                  <UserInfo></UserInfo>
+                  <AnswerSelection />
+                  <View style={styles.userInfo}>
+                    <UserInfo />
+                  </View>
+                </View>
+                <View style={styles.floatingActionButtons}>
+                  <FloatingActionButtons />
                 </View>
               </View>
-              <View style={styles.floatingActionButtons}>
-                <FloatingActionButtons />
-              </View>
-            </View>
-            <Playlist></Playlist>
+              <Playlist />
             </DataContext.Provider>
           </ImageBackground>
         ))}
       </PagerView>
     </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -85,7 +89,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'space-between',
     marginLeft: 16,
-    marginRight: 8
+    marginRight: 8,
   },
   questionContainer: {
     flex: 1,
@@ -114,7 +118,7 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
     lineHeight: 38,
-    padding: 10
+    padding: 10,
   },
   backgroundImage: {
     flex: 1,
@@ -122,8 +126,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   userInfo: {
-    marginBottom: 16
+    marginBottom: 16,
   },
 });
 
-export default Home
+export default Home;

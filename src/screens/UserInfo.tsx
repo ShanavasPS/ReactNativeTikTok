@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, {useContext} from 'react';
+import {View, Text, StyleSheet} from 'react-native';
 import TikTokColors from '../theme/TikTokColors';
-import { DataContext } from '../contexts/data_context';
+import {DataContext} from '../contexts/data_context';
 
 const UserInfo = () => {
   const item = useContext(DataContext);
@@ -10,13 +10,16 @@ const UserInfo = () => {
 
   return (
     <View style={styles.container}>
-        <Text style={styles.apUsHistoryContainer}>{item.user.name}</Text>
-        <View style={{flexDirection: 'row'}}>
-          <Text style={styles.description}>{normalText}</Text>
-          {matches && matches.map((match, index) => (
-            <Text key={index} style={styles.descriptionBold}>{match}</Text>
+      <Text style={styles.apUsHistoryContainer}>{item.user.name}</Text>
+      <View style={{flexDirection: 'row'}}>
+        <Text style={styles.description}>{normalText}</Text>
+        {matches &&
+          matches.map((match, index) => (
+            <Text key={index} style={styles.descriptionBold}>
+              {match}
+            </Text>
           ))}
-        </View>
+      </View>
     </View>
   );
 };

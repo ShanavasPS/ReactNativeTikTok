@@ -1,11 +1,7 @@
-import React, { useContext } from 'react';
-import {
-  FlatList,
-  StyleSheet,
-  View,
-} from 'react-native';
+import React, {useContext} from 'react';
+import {FlatList, StyleSheet, View} from 'react-native';
 import AnswerOption from './AnswerOption';
-import { DataContext, OptionContext } from '../contexts/data_context';
+import {DataContext, OptionContext} from '../contexts/data_context';
 
 const AnswerSelection = () => {
   const item = useContext(DataContext);
@@ -13,13 +9,13 @@ const AnswerSelection = () => {
     <View style={styles.container}>
       <FlatList
         data={item.options}
-        ItemSeparatorComponent={() => <View style={{ height: 8 }} />}
-        renderItem={({ item: option, index }) => (
+        ItemSeparatorComponent={() => <View style={{height: 8}} />}
+        renderItem={({item: option, index}) => (
           <OptionContext.Provider value={{index, option}}>
-            <AnswerOption/>
-          </OptionContext.Provider>          
+            <AnswerOption />
+          </OptionContext.Provider>
         )}
-        keyExtractor={(option) => option.id}
+        keyExtractor={option => option.id}
       />
     </View>
   );

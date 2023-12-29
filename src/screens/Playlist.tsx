@@ -1,18 +1,23 @@
-import React, { useContext } from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import React, {useContext} from 'react';
+import {View, Text, Image, StyleSheet} from 'react-native';
 import TikTokColors from '../theme/TikTokColors';
 import TikTokStrings from '../theme/TikTokStrings';
 import TikTokImages from '../theme/TikTokImages';
-import { DataContext } from '../contexts/data_context';
+import {DataContext} from '../contexts/data_context';
 
 const Playlist = () => {
-  const currentMcq = useContext(DataContext);  
+  const currentMcq = useContext(DataContext);
   return (
-    <View style={[styles.container, { backgroundColor: TikTokColors.playlistBackgroundColor }]}>
+    <View
+      style={[
+        styles.container,
+        {backgroundColor: TikTokColors.playlistBackgroundColor},
+      ]}>
       <View style={styles.contentContainer}>
         <Image source={TikTokImages.play} style={styles.playIcon} />
-        <Text style={[styles.playlistText, { color: TikTokColors.selectedText }]}>
-          {TikTokStrings.playlist}{currentMcq.playlist}
+        <Text style={[styles.playlistText, {color: TikTokColors.selectedText}]}>
+          {TikTokStrings.playlist}
+          {currentMcq.playlist}
         </Text>
         <View style={styles.spacer} />
         <Image source={TikTokImages.arrow} style={styles.arrowIcon} />
