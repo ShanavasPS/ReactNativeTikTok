@@ -65,7 +65,7 @@ const AnswerOption = () => {
   const getIconImageStyle = () => {
     return isOptionPressed && !isCorrectAnswer
       ? {transform: [{rotate: '180deg'}]}
-      : {};
+      : {transform: [{scaleX: -1}]}
   };
 
   useEffect(() => {
